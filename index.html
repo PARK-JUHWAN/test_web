@@ -175,7 +175,7 @@
     </div>
     <div class="nav-menu">
       <a class="active" data-tab="app">앱</a>
-      <a data-tab="custom">맞춤제작</a>
+      <a href="pages/custom.html">맞춤제작</a>
       <a data-tab="algo">알고리즘</a>
       <a data-tab="dev">개발자</a>
     </div>
@@ -256,11 +256,11 @@
 
 </div>
 
-<div class="balloon" id="balloon">
+<a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="balloon" id="balloon">
   <span class="star">★</span>
   <span>맞춤제작 의뢰</span>
   <span class="arrow">→</span>
-</div>
+</a>
 
 <script>
   // intro
@@ -295,6 +295,9 @@
   const navLinks = document.querySelectorAll('.nav-menu a');
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
+      // href 있는 링크는 페이지 이동 허용 (preventDefault 안 함)
+      if (link.getAttribute('href')) return;
+      // href 없는 (data-tab) 링크만 active 표시 변경
       e.preventDefault();
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
