@@ -84,8 +84,9 @@
   .steps-wrap{padding:80px 32px 160px;background:#fff;}
   .step{max-width:1100px;margin:0 auto 200px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative;}
   .step:last-child{margin-bottom:0;}
-  .step.reverse{direction:rtl;}
-  .step.reverse > *{direction:ltr;}
+  /* 짝수 step: 텍스트 우측, 이미지 좌측 (order로 처리, direction:rtl 안 씀) */
+  .step.reverse .step-text{order:2;}
+  .step.reverse .step-img{order:1;}
   .step-text{position:relative;}
   /* 거대 배경 숫자 */
   .step-text .big-num{position:absolute;top:-90px;left:-20px;font-size:240px;font-weight:700;letter-spacing:-12px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(0,0,0,.06);pointer-events:none;user-select:none;z-index:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;}
@@ -129,7 +130,8 @@
     .dyn-dot{width:7px;height:7px;margin-right:10px;}
     .steps-wrap{padding:60px 20px 100px;}
     .step{grid-template-columns:1fr;gap:32px;margin-bottom:120px;}
-    .step.reverse{direction:ltr;}
+    .step.reverse .step-text{order:1;}
+    .step.reverse .step-img{order:2;}
     .step-text .big-num{font-size:140px;top:-60px;left:-10px;letter-spacing:-7px;}
     .step.reverse .step-text .big-num{right:auto;left:-10px;}
     .step-text h3{font-size:30px;letter-spacing:-1.2px;}
@@ -155,7 +157,7 @@
 <nav class="main-nav" id="mainNav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <img src="images/web_logo_white.webp" alt="">
+      <img src="images/web_icon.webp" alt="">
       <span>FOUR OFF</span>
     </div>
     <div class="nav-menu">
