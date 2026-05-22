@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>맞춤제작 | FOUR OFF</title>
+<meta name="description" content="말 필요없이 직접 써보세요. 우리 병동 전용으로 맞춤 제작합니다.">
+<link rel="icon" type="image/png" href="../images/web_icon.png">
+<link rel="apple-touch-icon" href="../images/web_icon.png">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Pretendard','Apple SD Gothic Neo',sans-serif;background:#fff;color:#1d1d1f;-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  img{display:block;max-width:100%;}
+
+  /* NAV */
+  .main-nav{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid rgba(0,0,0,.06);z-index:100;}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;letter-spacing:-.3px;cursor:pointer;}
+  .nav-brand img{width:26px;height:26px;}
+  .nav-menu{display:flex;gap:36px;}
+  .nav-menu a{font-size:14px;color:#515154;font-weight:500;cursor:pointer;transition:color .25s;position:relative;padding:6px 0;}
+  .nav-menu a:hover{color:#1d1d1f;}
+  .nav-menu a.active{color:#1d1d1f;font-weight:600;}
+  .nav-menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#1d1d1f;border-radius:1px;}
+
+  /* Hero: 후기 */
+  .hero{min-height:100vh;padding:140px 32px 100px;background:#fafafa;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:1200px;height:700px;background:radial-gradient(ellipse, rgba(0,102,255,.05) 0%, transparent 60%);pointer-events:none;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:#fff;border:.5px solid #e8e8ed;padding:8px 16px;border-radius:980px;font-size:12px;color:#515154;margin-bottom:32px;box-shadow:0 4px 14px rgba(0,0,0,.04);}
+  .hero-tag .star{color:#fbbf24;font-size:13px;}
+  .hero-title{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1.1;color:#1d1d1f;text-align:center;margin-bottom:56px;}
+  .hero-title .blue{color:#0066ff;}
+  .review-frame{position:relative;max-width:960px;width:100%;margin:0 auto;}
+  .review-frame img{width:100%;height:auto;border-radius:20px;box-shadow:0 30px 80px rgba(0,0,0,.10);}
+  .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(0,0,0,.35);font-size:10px;letter-spacing:3px;}
+  .scroll-hint .line{width:1px;height:32px;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent);animation:scrollLine 2s ease-in-out infinite;}
+  @keyframes scrollLine{0%,100%{transform:scaleY(.6);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
+
+  /* 다운로드 섹션 */
+  .download-section{padding:180px 32px 160px;background:#fff;text-align:center;position:relative;overflow:hidden;}
+  .dl-headline{font-size:72px;font-weight:600;letter-spacing:-2.8px;line-height:1.05;margin-bottom:24px;color:#1d1d1f;}
+  .dl-sub{font-size:18px;color:#515154;line-height:1.65;margin-bottom:56px;}
+  .dl-sub .meta{display:inline-flex;align-items:center;gap:14px;margin-top:18px;font-size:12px;color:#86868b;}
+  .dl-sub .meta span{display:inline-flex;align-items:center;gap:6px;}
+  .dl-sub .meta .sep{color:#d2d2d7;}
+  /* 다운로드 버튼 */
+  .dl-btn{display:inline-flex;align-items:center;gap:14px;background:#0066ff;color:#fff;padding:22px 40px 22px 32px;border-radius:980px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);position:relative;overflow:hidden;}
+  .dl-btn:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,102,255,.4), 0 8px 16px rgba(0,0,0,.1);}
+  .dl-btn:active{transform:translateY(0);}
+  .dl-btn .icon{width:36px;height:36px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;animation:bounce 2s ease-in-out infinite;}
+  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(3px);}}
+  .dl-note{margin-top:28px;font-size:12px;color:#86868b;line-height:1.6;}
+  .dl-note a{color:#0066ff;}
+
+  /* 작동원리 (EXE step) */
+  .exe-intro{padding:160px 32px 80px;background:#fafafa;text-align:center;}
+  .exe-tag{font-size:12px;color:#0066ff;letter-spacing:1.5px;font-weight:600;margin-bottom:14px;}
+  .exe-title{font-size:60px;font-weight:600;letter-spacing:-2.2px;line-height:1.05;color:#1d1d1f;}
+
+  .exe-wrap{padding:60px 32px 160px;background:#fafafa;}
+  .exe-step{max-width:1100px;margin:0 auto 180px;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center;position:relative;}
+  .exe-step:last-child{margin-bottom:0;}
+  .exe-step.reverse .exe-step-text{order:2;}
+  .exe-step.reverse .exe-step-img{order:1;}
+  .exe-step-text{position:relative;}
+  .exe-step-text .big-num{position:absolute;top:-90px;left:-20px;font-size:240px;font-weight:700;letter-spacing:-12px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(0,0,0,.06);pointer-events:none;user-select:none;z-index:0;}
+  .exe-step.reverse .exe-step-text .big-num{left:auto;right:-20px;}
+  .exe-step-text > *:not(.big-num){position:relative;z-index:1;}
+  .exe-step-text .num{font-size:12px;color:#0066ff;letter-spacing:2.5px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .exe-step-text .num::before{content:"";width:24px;height:1px;background:#0066ff;}
+  .exe-step-text h3{font-size:48px;font-weight:600;letter-spacing:-1.6px;line-height:1.05;margin-bottom:24px;}
+  .exe-step-text p{font-size:18px;color:#515154;line-height:1.75;}
+  .exe-step-text p b{color:#0066ff;font-weight:600;}
+  .exe-step-img{display:flex;justify-content:center;align-items:center;}
+  .exe-step-img img{width:100%;max-width:600px;border-radius:14px;}
+  /* fade in */
+  .exe-step-text, .exe-step-img{opacity:0;transition:opacity .9s ease;}
+  .exe-step.in .exe-step-text{opacity:1;}
+  .exe-step.in .exe-step-img{opacity:1;transition-delay:.2s;}
+
+  /* CTA */
+  .cta-section{padding:140px 32px;background:#fff;text-align:center;}
+  .cta-title{font-size:60px;font-weight:600;letter-spacing:-2px;line-height:1.05;margin-bottom:20px;}
+  .cta-sub{font-size:18px;color:#515154;margin-bottom:40px;}
+  .cta-btn{display:inline-block;background:#1d1d1f;color:#fff;padding:14px 30px;border-radius:980px;font-size:15px;font-weight:500;cursor:pointer;transition:all .2s;}
+  .cta-btn:hover{background:#000;transform:translateY(-1px);}
+
+  /* footer */
+  .footer{padding:48px 32px;background:#fafafa;border-top:.5px solid #e8e8ed;text-align:center;font-size:12px;color:#86868b;}
+
+  /* balloon */
+  .balloon{position:fixed;right:24px;bottom:24px;background:#0066ff;color:#fff;padding:14px 22px 14px 18px;border-radius:980px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 14px 40px rgba(0,102,255,.35), 0 6px 14px rgba(0,0,0,.08);cursor:pointer;z-index:90;animation:balloonFloat 3s ease-in-out infinite;}
+  .balloon:hover{background:#0052cc;}
+  .balloon .star{color:#ffd700;font-size:14px;}
+  .balloon .arrow{font-size:14px;margin-left:2px;}
+  @keyframes balloonFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+  @media(max-width:768px){
+    .nav-inner{padding:14px 20px;}
+    .nav-menu{gap:20px;}
+    .nav-menu a{font-size:12px;}
+    .hero{padding:100px 20px 80px;}
+    .hero-title{font-size:32px;letter-spacing:-1.3px;margin-bottom:40px;}
+    .download-section{padding:100px 20px 100px;}
+    .dl-headline{font-size:40px;letter-spacing:-1.6px;}
+    .dl-btn{padding:18px 28px 18px 22px;font-size:15px;}
+    .dl-btn .icon{width:30px;height:30px;font-size:15px;}
+    .exe-intro{padding:80px 20px 50px;}
+    .exe-title{font-size:32px;letter-spacing:-1.2px;}
+    .exe-wrap{padding:40px 20px 100px;}
+    .exe-step{grid-template-columns:1fr;gap:32px;margin-bottom:100px;}
+    .exe-step.reverse .exe-step-text{order:1;}
+    .exe-step.reverse .exe-step-img{order:2;}
+    .exe-step-text .big-num{font-size:140px;top:-60px;left:-10px;letter-spacing:-7px;}
+    .exe-step.reverse .exe-step-text .big-num{right:auto;left:-10px;}
+    .exe-step-text h3{font-size:30px;letter-spacing:-1.2px;}
+    .exe-step-text p{font-size:15px;}
+    .cta-title{font-size:36px;}
+    .balloon{right:16px;bottom:16px;padding:12px 18px 12px 14px;font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../images/web_logo_white.webp" alt="">
+      <span>FOUR OFF</span>
+    </a>
+    <div class="nav-menu">
+      <a href="../index.html">앱</a>
+      <a href="custom.html" class="active">맞춤제작</a>
+      <a href="#">알고리즘</a>
+      <a href="#">개발자</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero: 후기 -->
+<section class="hero">
+  <div class="hero-tag">
+    <span class="star">★ 5.0</span>
+    <span>실제 의뢰자 후기</span>
+  </div>
+  <h1 class="hero-title">의뢰자의 <span class="blue">진짜 말</span>이<br>전부입니다.</h1>
+  <div class="review-frame">
+    <img src="../images/web_review_1.webp" alt="크몽 5.0 후기">
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="line"></div>
+  </div>
+</section>
+
+<!-- 다운로드 섹션 -->
+<section class="download-section">
+  <h2 class="dl-headline">말 필요없이.<br>직접 써보세요.</h2>
+  <p class="dl-sub">
+    실제 작동하는 데모 EXE를 받아 바로 실행하세요.<br>
+    마음에 들면, 우리 병동 전용으로 맞춤 제작합니다.
+    <span class="meta">
+      <span>💻 Windows 전용</span>
+      <span class="sep">·</span>
+      <span>📦 fouroff.exe</span>
+      <span class="sep">·</span>
+      <span>🔒 PyArmor 보호</span>
+    </span>
+  </p>
+
+  <a href="../exe/fouroff.exe" download class="dl-btn">
+    <span class="icon">⬇</span>
+    <span>fouroff.exe 다운로드</span>
+  </a>
+
+  <p class="dl-note">
+    ⚠️ 윈도우 SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b> 눌러주세요.<br>
+    개인 개발자 서명이라 처음엔 차단될 수 있습니다.
+  </p>
+</section>
+
+<!-- 작동원리 STEP -->
+<section class="exe-intro">
+  <div class="exe-tag">HOW IT WORKS</div>
+  <h2 class="exe-title">3단계, 그게 전부입니다.</h2>
+</section>
+
+<section class="exe-wrap">
+
+  <div class="exe-step">
+    <div class="exe-step-text">
+      <div class="big-num">01</div>
+      <div class="num">STEP 01</div>
+      <h3>실행 & 입력</h3>
+      <p>EXE를 더블클릭하면 끝. 설치 불필요.<br>간호사 명단과 <b>저번달·이번달 근무이력</b>만 입력합니다.</p>
+    </div>
+    <div class="exe-step-img"><img src="../images/web_exe_step1.webp" alt="EXE 실행"></div>
+  </div>
+
+  <div class="exe-step reverse">
+    <div class="exe-step-text">
+      <div class="big-num">02</div>
+      <div class="num">STEP 02</div>
+      <h3>1초 생성</h3>
+      <p>버튼 한 번에 모든 조건을 만족하는 근무표 완성.<br><b>엑셀(.xlsx) 파일</b>로 바로 저장됩니다.</p>
+    </div>
+    <div class="exe-step-img"><img src="../images/web_exe_step2.webp" alt="근무표 생성"></div>
+  </div>
+
+  <div class="exe-step">
+    <div class="exe-step-text">
+      <div class="big-num">03</div>
+      <div class="num">STEP 03</div>
+      <h3>엑셀로 받기</h3>
+      <p>엑셀에서 그대로 열어 인쇄 또는 공유.<br>마음에 들면 <b>우리 병동 전용 룰</b>로 맞춤 제작 의뢰.</p>
+    </div>
+    <div class="exe-step-img"><img src="../images/web_exe_step3.webp" alt="엑셀 결과"></div>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="cta-title">우리 병동 룰,<br>그대로 만들어드립니다.</h2>
+  <p class="cta-sub">2교대 ↔ 3교대 · 특수 근무 · 야간 2인 · 포인트제까지.</p>
+  <a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="cta-btn">크몽으로 의뢰하기 →</a>
+</section>
+
+<!-- footer -->
+<footer class="footer">
+  © 2026 FOUR OFF · 박주환 · 보건복지부 인증 간호사
+</footer>
+
+<!-- balloon -->
+<a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="balloon">
+  <span class="star">★</span>
+  <span>크몽으로 의뢰하기</span>
+  <span class="arrow">→</span>
+</a>
+
+<script>
+  // exe step fade-in on scroll
+  const steps = document.querySelectorAll('.exe-step');
+  const stepIo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        stepIo.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  steps.forEach(s => stepIo.observe(s));
+</script>
+
+</body>
+</html>
