@@ -263,18 +263,29 @@
 </a>
 
 <script>
-  // intro
+  // 인트로: 같은 세션에서 이미 봤으면 스킵
   const intro = document.getElementById('intro');
   const mainNav = document.getElementById('mainNav');
   const main = document.getElementById('main');
   const balloon = document.getElementById('balloon');
 
-  intro.addEventListener('click', () => {
+  if (sessionStorage.getItem('introSeen') === '1') {
+    // 이미 본 세션: 인트로 즉시 숨김, 메인 콘텐츠 바로 표시
+    intro.style.transition = 'none';
     intro.classList.add('fade');
     mainNav.classList.add('show');
     main.classList.add('show');
-    setTimeout(() => balloon.classList.add('show'), 1400);
-  });
+    balloon.classList.add('show');
+  } else {
+    // 첫 진입: 인트로 클릭 대기
+    intro.addEventListener('click', () => {
+      intro.classList.add('fade');
+      mainNav.classList.add('show');
+      main.classList.add('show');
+      setTimeout(() => balloon.classList.add('show'), 1400);
+      sessionStorage.setItem('introSeen', '1');
+    });
+  }
 
   // graph auto fade
   const graphA = document.getElementById('graphA');
