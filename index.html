@@ -99,10 +99,13 @@
   .step-text p b{color:#0066ff;font-weight:600;}
   .step-img{display:flex;justify-content:center;align-items:center;position:relative;}
   .step-img img{width:100%;max-width:480px;transition:transform .6s ease;}
-  /* 스크롤 페이드인 */
-  .step-text, .step-img{opacity:0;transform:translateY(40px);transition:opacity .9s ease, transform .9s ease;}
-  .step.in .step-text{opacity:1;transform:translateY(0);}
-  .step.in .step-img{opacity:1;transform:translateY(0);transition-delay:.2s;}
+  /* 폰 위치 보정: 모든 이미지가 폰이 우측 치우쳐 있어서, 좌우 배치별로 보정 */
+  .step:not(.reverse) .step-img img{transform:translateX(-12%);}
+  .step.reverse .step-img img{transform:translateX(12%);}
+  /* 스크롤 페이드인 (transform 안 건드림, opacity만) */
+  .step-text, .step-img{opacity:0;transition:opacity .9s ease;}
+  .step.in .step-text{opacity:1;}
+  .step.in .step-img{opacity:1;transition-delay:.2s;}
 
   /* footer */
   .footer{padding:48px 32px;background:#fafafa;border-top:.5px solid #e8e8ed;text-align:center;font-size:12px;color:#86868b;}
@@ -132,6 +135,8 @@
     .step{grid-template-columns:1fr;gap:32px;margin-bottom:120px;}
     .step.reverse .step-text{order:1;}
     .step.reverse .step-img{order:2;}
+    .step:not(.reverse) .step-img img,
+    .step.reverse .step-img img{transform:none;}
     .step-text .big-num{font-size:140px;top:-60px;left:-10px;letter-spacing:-7px;}
     .step.reverse .step-text .big-num{right:auto;left:-10px;}
     .step-text h3{font-size:30px;letter-spacing:-1.2px;}
