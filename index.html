@@ -96,10 +96,6 @@
   .step.reverse .step-text{order:2;}
   .step.reverse .step-img{order:1;}
   .step-text{position:relative;}
-  /* 거대 배경 숫자 */
-  .step-text .big-num{position:absolute;top:-90px;left:-20px;font-size:240px;font-weight:700;letter-spacing:-12px;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(0,0,0,.06);pointer-events:none;user-select:none;z-index:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display',sans-serif;}
-  .step.reverse .step-text .big-num{left:auto;right:-20px;}
-  .step-text > *:not(.big-num){position:relative;z-index:1;}
   .step-text .num{font-size:12px;color:#0066ff;letter-spacing:2.5px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
   .step-text .num::before{content:"";width:24px;height:1px;background:#0066ff;}
   .step-text h3{font-size:48px;font-weight:600;letter-spacing:-1.6px;line-height:1.05;margin-bottom:24px;}
@@ -147,8 +143,6 @@
     .step.reverse .step-img{order:2;}
     .step:not(.reverse) .step-img img,
     .step.reverse .step-img img{transform:none;}
-    .step-text .big-num{font-size:140px;top:-60px;left:-10px;letter-spacing:-7px;}
-    .step.reverse .step-text .big-num{right:auto;left:-10px;}
     .step-text h3{font-size:30px;letter-spacing:-1.2px;}
     .step-text p{font-size:15px;}
     .balloon{right:16px;bottom:16px;padding:12px 18px 12px 14px;font-size:12px;}
@@ -178,8 +172,7 @@
     <div class="nav-menu">
       <a class="active" data-tab="app">앱</a>
       <a href="pages/custom.html">맞춤제작</a>
-      <a data-tab="algo">알고리즘</a>
-      <a data-tab="dev">개발자</a>
+      <a href="pages/developer.html">개발자</a>
     </div>
   </div>
 </nav>
@@ -211,7 +204,6 @@
 
     <div class="step">
       <div class="step-text">
-        <div class="big-num">01</div>
         <div class="num">STEP 01</div>
         <h3>방 만들기</h3>
         <p>회원가입 없이 <b>1분 셋업</b>.<br>병동 이름과 비밀번호만으로 시작합니다.</p>
@@ -221,7 +213,6 @@
 
     <div class="step reverse">
       <div class="step-text">
-        <div class="big-num">02</div>
         <div class="num">STEP 02</div>
         <h3>기본정보 입력</h3>
         <p>연/월, 간호사 수, 근무 유형, 균형 기준.<br><b>한 번 입력</b>하면 매달 그대로 사용합니다.</p>
@@ -231,7 +222,6 @@
 
     <div class="step">
       <div class="step-text">
-        <div class="big-num">03</div>
         <div class="num">STEP 03</div>
         <h3>희망근무 수집</h3>
         <p>달력에서 D · E · N · X <b>터치 한 번</b>.<br>같이 일하기 불편한 동료까지 설정합니다.</p>
@@ -241,7 +231,6 @@
 
     <div class="step reverse">
       <div class="step-text">
-        <div class="big-num">04</div>
         <div class="num">STEP 04</div>
         <h3>1초 안에 완성</h3>
         <p>버튼 한 번. <b>모든 조건을 만족</b>하는 근무표.<br>엑셀 다운로드까지 한 화면에서.</p>
@@ -271,12 +260,15 @@
   const balloon = document.getElementById('balloon');
 
   if (sessionStorage.getItem('introSeen') === '1') {
-    // 이미 본 세션: 인트로 즉시 숨김, 메인 콘텐츠 바로 표시
+    // 이미 본 세션: 인트로 즉시 숨김, 메인은 부드럽게 페이드인
     intro.style.transition = 'none';
     intro.classList.add('fade');
     mainNav.classList.add('show');
-    main.classList.add('show');
-    balloon.classList.add('show');
+    // 다음 프레임에 main 페이드인 (transition 정상 작동하게)
+    requestAnimationFrame(() => {
+      main.classList.add('show');
+      balloon.classList.add('show');
+    });
   } else {
     // 첫 진입: 인트로 클릭 대기
     intro.addEventListener('click', () => {

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>개발자 | FOUR OFF</title>
+<meta name="description" content="간호사가 만든, 간호사를 위한 앱.">
+<link rel="icon" type="image/png" href="../images/web_icon.png">
+<link rel="apple-touch-icon" href="../images/web_icon.png">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Pretendard','Apple SD Gothic Neo',sans-serif;background:#fff;color:#1d1d1f;-webkit-font-smoothing:antialiased;}
+  body{overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  img{display:block;max-width:100%;}
+
+  /* 메인 NAV */
+  .main-nav{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid rgba(0,0,0,.06);z-index:100;}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+  .nav-brand{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;letter-spacing:-.3px;cursor:pointer;}
+  .nav-brand img{width:26px;height:26px;}
+  .nav-menu{display:flex;gap:36px;}
+  .nav-menu a{font-size:14px;color:#515154;font-weight:500;cursor:pointer;transition:color .25s;position:relative;padding:6px 0;}
+  .nav-menu a:hover{color:#1d1d1f;}
+  .nav-menu a.active{color:#1d1d1f;font-weight:600;}
+  .nav-menu a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#1d1d1f;border-radius:1px;}
+
+  /* 서브탭 (sticky, 메인 NAV 바로 아래) */
+  .sub-nav{position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:.5px solid rgba(0,0,0,.06);z-index:99;}
+  .sub-inner{max-width:1200px;margin:0 auto;padding:14px 32px;display:flex;justify-content:center;gap:36px;}
+  .sub-tab{font-size:14px;color:#515154;font-weight:500;cursor:pointer;transition:color .25s;position:relative;padding:6px 0;}
+  .sub-tab:hover{color:#1d1d1f;}
+  .sub-tab.active{color:#1d1d1f;font-weight:600;}
+  .sub-tab.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#0066ff;border-radius:1px;}
+
+  /* 페이지 전체 fade-in */
+  .page-fade{opacity:0;transition:opacity .8s ease;}
+  .page-fade.in{opacity:1;}
+
+  /* 본문 컨테이너 (메인 NAV + 서브탭 높이 = 약 120px 띄움) */
+  .content{padding-top:120px;}
+
+  /* 탭 콘텐츠 (fade in/out 전환) */
+  .panel{display:none;opacity:0;transition:opacity .4s ease;min-height:80vh;padding:80px 32px;}
+  .panel.active{display:block;}
+  .panel.fade-in{opacity:1;}
+
+  /* 임시 본문 */
+  .placeholder{display:flex;align-items:center;justify-content:center;min-height:60vh;}
+  .placeholder h1{font-size:56px;font-weight:600;letter-spacing:-2px;color:#1d1d1f;}
+
+  /* footer */
+  .footer{padding:48px 32px;background:#fafafa;border-top:.5px solid #e8e8ed;text-align:center;font-size:12px;color:#86868b;}
+
+  /* balloon */
+  .balloon{position:fixed;right:24px;bottom:24px;background:#0066ff;color:#fff;padding:14px 22px 14px 18px;border-radius:980px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 14px 40px rgba(0,102,255,.35), 0 6px 14px rgba(0,0,0,.08);cursor:pointer;z-index:90;animation:balloonFloat 3s ease-in-out infinite;}
+  .balloon:hover{background:#0052cc;}
+  .balloon .star{color:#ffd700;font-size:14px;}
+  .balloon .arrow{font-size:14px;margin-left:2px;}
+  @keyframes balloonFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+  @media(max-width:768px){
+    .nav-inner{padding:14px 20px;}
+    .nav-menu{gap:20px;}
+    .nav-menu a{font-size:12px;}
+    .sub-nav{top:58px;}
+    .sub-inner{padding:12px 20px;gap:24px;}
+    .sub-tab{font-size:12px;}
+    .content{padding-top:110px;}
+    .panel{padding:60px 20px;}
+    .placeholder h1{font-size:32px;letter-spacing:-1.3px;}
+    .balloon{right:16px;bottom:16px;padding:12px 18px 12px 14px;font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 메인 NAV -->
+<nav class="main-nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-brand">
+      <img src="../images/web_logo_white.webp" alt="">
+      <span>FOUR OFF</span>
+    </a>
+    <div class="nav-menu">
+      <a href="../index.html">앱</a>
+      <a href="custom.html">맞춤제작</a>
+      <a href="developer.html" class="active">개발자</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 서브탭 (sticky) -->
+<nav class="sub-nav">
+  <div class="sub-inner">
+    <a class="sub-tab active" data-panel="portfolio">포트폴리오</a>
+    <a class="sub-tab" data-panel="algorithm">알고리즘</a>
+    <a class="sub-tab" data-panel="about">개발자</a>
+  </div>
+</nav>
+
+<!-- 페이지 전체 fade-in -->
+<div class="page-fade" id="pageFade">
+
+  <div class="content">
+
+    <!-- 포트폴리오 (기본 활성) -->
+    <section class="panel active fade-in" id="portfolio">
+      <div class="placeholder"><h1>포트폴리오</h1></div>
+    </section>
+
+    <!-- 알고리즘 -->
+    <section class="panel" id="algorithm">
+      <div class="placeholder"><h1>알고리즘</h1></div>
+    </section>
+
+    <!-- 개발자 소개 -->
+    <section class="panel" id="about">
+      <div class="placeholder"><h1>개발자</h1></div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    © 2026 FOUR OFF · 박주환 · 보건복지부 인증 간호사
+  </footer>
+
+</div>
+
+<!-- balloon -->
+<a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="balloon">
+  <span class="star">★</span>
+  <span>맞춤제작 의뢰</span>
+  <span class="arrow">→</span>
+</a>
+
+<script>
+  // 페이지 전체 fade-in
+  window.addEventListener('DOMContentLoaded', () => {
+    requestAnimationFrame(() => {
+      document.getElementById('pageFade').classList.add('in');
+    });
+
+    // URL 해시로 탭 결정
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+      switchTab(hash);
+    }
+  });
+
+  // 서브탭 전환
+  const tabs = document.querySelectorAll('.sub-tab');
+  const panels = document.querySelectorAll('.panel');
+
+  function switchTab(targetId) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.panel === targetId));
+    // fade out 현재
+    panels.forEach(p => p.classList.remove('fade-in'));
+    setTimeout(() => {
+      panels.forEach(p => p.classList.toggle('active', p.id === targetId));
+      requestAnimationFrame(() => {
+        const target = document.getElementById(targetId);
+        if (target) target.classList.add('fade-in');
+      });
+    }, 200);
+    // URL 해시 업데이트
+    history.replaceState(null, '', '#' + targetId);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      e.preventDefault();
+      switchTab(tab.dataset.panel);
+    });
+  });
+</script>
+
+</body>
+</html>
