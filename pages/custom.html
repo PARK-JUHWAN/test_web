@@ -41,9 +41,6 @@
   .review-frame{position:relative;max-width:1000px;width:100%;margin:0 auto;aspect-ratio:3/2;}
   .review-frame img{width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .6s ease;}
   .review-frame img.loaded{opacity:1;}
-  .scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(0,0,0,.35);font-size:10px;letter-spacing:3px;}
-  .scroll-hint .line{width:1px;height:32px;background:linear-gradient(180deg,rgba(0,0,0,.3),transparent);animation:scrollLine 2s ease-in-out infinite;}
-  @keyframes scrollLine{0%,100%{transform:scaleY(.6);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
 
   /* 다운로드 섹션 - 간결하게 */
   .download-section{padding:180px 32px 160px;background:#fff;text-align:center;}
@@ -149,9 +146,6 @@
     <h1 class="hero-title">의뢰자의 <span class="blue">진짜 말</span>이<br>전부입니다.</h1>
     <div class="review-frame">
       <img src="../images/web_review_1.webp" alt="크몽 5.0 후기" onload="this.classList.add('loaded')">
-    </div>
-    <div class="scroll-hint">
-      <div class="line"></div>
     </div>
   </section>
 
