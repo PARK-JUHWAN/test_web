@@ -86,12 +86,14 @@
 
   /* footer */
   .footer{padding:48px 32px;background:#fafafa;border-top:.5px solid #e8e8ed;text-align:center;font-size:12px;color:#86868b;}
+  .footer a{color:inherit;text-decoration:none;transition:color .2s;}
+  .footer a:hover{color:#1d1d1f;}
 
   /* balloon */
-  .balloon{position:fixed;right:24px;bottom:24px;background:#0066ff;color:#fff;padding:14px 22px 14px 18px;border-radius:980px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 14px 40px rgba(0,102,255,.35), 0 6px 14px rgba(0,0,0,.08);cursor:pointer;z-index:90;animation:balloonFloat 3s ease-in-out infinite;}
-  .balloon:hover{background:#0052cc;}
-  .balloon .star{color:#ffd700;font-size:14px;}
-  .balloon .arrow{font-size:14px;margin-left:2px;}
+  .balloon{position:fixed;right:24px;bottom:24px;background:#1d1d1f;color:#fff;padding:16px 26px 16px 22px;border-radius:980px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:12px;box-shadow:0 0 12px rgba(255,215,0,.15), 0 16px 44px rgba(0,0,0,.32);cursor:pointer;z-index:90;animation:balloonFloat 3s ease-in-out infinite;text-decoration:none;transition:box-shadow .4s ease;}
+  .balloon:hover{box-shadow:0 0 30px rgba(255,215,0,.5), 0 16px 44px rgba(0,0,0,.32);}
+  .balloon .star{color:#fbbf24;font-size:15px;}
+  .balloon .arrow{font-size:15px;margin-left:3px;color:#fff;}
   @keyframes balloonFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
 
   @media(max-width:768px){
@@ -113,7 +115,7 @@
     .exe-step-text h3{font-size:30px;letter-spacing:-1.2px;}
     .exe-step-text p{font-size:15px;}
     .cta-title{font-size:36px;}
-    .balloon{right:16px;bottom:16px;padding:12px 18px 12px 14px;font-size:12px;}
+    .balloon{right:16px;bottom:16px;padding:14px 22px 14px 18px;font-size:13px;}
   }
 </style>
 </head>
@@ -209,7 +211,7 @@
 
   <!-- footer -->
   <footer class="footer">
-    © 2026 FOUR OFF · 박주환 · 보건복지부 인증 간호사
+    © 2026 FOUR OFF · <a href="terms.html">이용약관</a>
   </footer>
 
 </div>
