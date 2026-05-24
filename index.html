@@ -110,6 +110,19 @@
   /* footer */
   .footer{padding:48px 32px;background:#fafafa;border-top:.5px solid #e8e8ed;text-align:center;font-size:12px;color:#86868b;}
 
+  /* 앱 다운로드 섹션 (STEP 4 아래) */
+  .free-section{padding:160px 32px 140px;background:#fff;text-align:center;}
+  .free-tag{font-size:12px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:18px;}
+  .free-title{font-size:64px;font-weight:600;letter-spacing:-2.4px;line-height:1.05;color:#1d1d1f;margin-bottom:60px;}
+  .free-title .blue{color:#0066ff;}
+  /* 디바이스 분기 — 기본 다 숨김, JS가 해당 디바이스만 표시 */
+  .device-block{display:none;}
+  .device-block.show{display:flex;flex-direction:column;align-items:center;gap:20px;}
+  .store-badge{display:inline-block;transition:transform .25s ease;}
+  .store-badge:hover{transform:translateY(-4px);}
+  .store-badge img{width:200px;height:200px;filter:drop-shadow(0 14px 30px rgba(0,0,0,.12));}
+  .store-label{font-size:13px;color:#6e6e73;}
+
   /* balloon */
   .balloon{position:fixed;right:24px;bottom:24px;background:#0066ff;color:#fff;padding:14px 22px 14px 18px;border-radius:980px;font-size:13px;font-weight:500;display:flex;align-items:center;gap:10px;box-shadow:0 14px 40px rgba(0,102,255,.35), 0 6px 14px rgba(0,0,0,.08);cursor:pointer;z-index:90;opacity:0;transform:translateY(20px);transition:opacity .5s ease, transform .5s ease;}
   .balloon.show{opacity:1;transform:translateY(0);animation:balloonFloat 3s ease-in-out infinite 1s;}
@@ -139,6 +152,9 @@
     .step.reverse .step-img img{transform:none;}
     .step-text h3{font-size:30px;letter-spacing:-1.2px;}
     .step-text p{font-size:15px;}
+    .free-section{padding:100px 20px 80px;}
+    .free-title{font-size:36px;letter-spacing:-1.3px;margin-bottom:40px;}
+    .store-badge img{width:160px;height:160px;}
     .balloon{right:16px;bottom:16px;padding:12px 18px 12px 14px;font-size:12px;}
   }
 </style>
@@ -225,6 +241,35 @@
       <div class="step-img"><img src="images/web_step4.webp" alt="결과"></div>
     </div>
 
+  </section>
+
+  <!-- 앱 다운로드 섹션 (디바이스 분기) -->
+  <section class="free-section">
+    <div class="free-tag">FREE FOREVER</div>
+    <h2 class="free-title">광고, 구독료 없습니다.<br><span class="blue">지금, 무료 다운로드.</span></h2>
+
+    <!-- PC 전용 -->
+    <div class="device-block" id="pcBlock">
+      <a href="https://park-juhwan.github.io/fouroff_entrance" class="store-badge">
+        <img src="images/web_qrcode.webp" alt="">
+      </a>
+    </div>
+
+    <!-- iOS 전용 -->
+    <div class="device-block" id="iosBlock">
+      <a href="https://apps.apple.com/kr/app/%EA%B0%84%ED%98%B8%EC%82%AC-%EA%B7%BC%EB%AC%B4%ED%91%9C-%ED%8F%AC%EC%98%A4%ED%94%84/id6756883621" class="store-badge">
+        <img src="images/web_appstore.webp" alt="App Store에서 다운로드">
+      </a>
+      <span class="store-label">App Store</span>
+    </div>
+
+    <!-- Android 전용 -->
+    <div class="device-block" id="androidBlock">
+      <a href="https://play.google.com/store/apps/details?id=com.juhwanpark.fouroff&hl=ko" class="store-badge">
+        <img src="images/web_playstore.webp" alt="Google Play에서 다운로드">
+      </a>
+      <span class="store-label">Google Play</span>
+    </div>
   </section>
 
   <footer class="footer">
@@ -341,6 +386,20 @@
     });
   }, { threshold: 0.2 });
   steps.forEach(s => stepIo.observe(s));
+
+  // 디바이스 분기: PC / iOS / Android 중 하나만 표시
+  (function detectDevice(){
+    const ua = navigator.userAgent;
+    const isiOS = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+    if (isiOS) {
+      document.getElementById('iosBlock').classList.add('show');
+    } else if (isAndroid) {
+      document.getElementById('androidBlock').classList.add('show');
+    } else {
+      document.getElementById('pcBlock').classList.add('show');
+    }
+  })();
 </script>
 
 </body>
