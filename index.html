@@ -57,6 +57,8 @@
   .graph-stage{position:relative;max-width:960px;width:100%;margin:0 auto;}
   .graph-img{width:100%;height:auto;display:block;transition:opacity 1.2s ease;}
   .graph-img.is-hidden{opacity:0;position:absolute;top:0;left:0;}
+  .graph-caption{text-align:center;margin-top:20px;font-size:14px;color:#86868b;letter-spacing:.3px;font-weight:500;transition:opacity .6s ease;min-height:22px;}
+  .graph-caption b{color:#1d1d1f;font-weight:700;}
 
   /* Steps Intro — 동적 효과 */
   .steps-intro{padding:160px 32px 80px;background:#fff;text-align:center;}
@@ -123,7 +125,7 @@
   .store-badge{display:inline-block;transition:transform .25s ease;}
   .store-badge:hover{transform:translateY(-4px);}
   .store-badge img{width:200px;height:200px;filter:drop-shadow(0 14px 30px rgba(0,0,0,.12));}
-  .store-label{font-size:13px;color:#6e6e73;}
+  .store-label{font-size:13px;color:#6e6e73;text-align:center;line-height:1.5;letter-spacing:.3px;}
 
   /* balloon */
   .balloon{position:fixed;right:24px;bottom:24px;background:#1d1d1f;color:#fff;padding:16px 26px 16px 22px;border-radius:980px;font-size:15px;font-weight:600;display:flex;align-items:center;gap:12px;box-shadow:0 0 12px rgba(255,215,0,.15), 0 16px 44px rgba(0,0,0,.32);cursor:pointer;z-index:90;opacity:0;transform:translateY(20px);transition:opacity .5s ease, transform .5s ease, box-shadow .4s ease;text-decoration:none;}
@@ -174,7 +176,7 @@
 <nav class="main-nav" id="mainNav">
   <div class="nav-inner">
     <div class="nav-brand">
-      <img src="images/web_logo_white.webp" alt="">
+      <img src="images/web_icon.png" alt="">
       <span>FOUR OFF</span>
     </div>
     <div class="nav-menu">
@@ -188,11 +190,12 @@
 <div class="main" id="main">
 
   <section class="hero">
-    <h1 class="live-headline"><span class="live-dot"></span>지금, 이 순간에도 다운로드 중.</h1>
+    <h1 class="live-headline"><span class="live-dot"></span>지금, 이 순간에도<br>다운로드 중.</h1>
     <div class="graph-stage">
       <img src="images/web_apple.webp" alt="App Store 다운로드" class="graph-img" id="graphA">
       <img src="images/web_google.webp" alt="Google Play 다운로드" class="graph-img is-hidden" id="graphB">
     </div>
+    <p class="graph-caption" id="graphCaption">26년 5월 기준 <b>90+</b> 다운로드</p>
   </section>
 
   <section class="steps-intro">
@@ -210,35 +213,35 @@
     <div class="step">
       <div class="step-text">
         <div class="num">STEP 01</div>
-        <h3>방 만들기</h3>
-        <p>회원가입 없이 <b>1분 셋업</b>.<br>병동 이름과 비밀번호만으로 시작합니다.</p>
+        <h3>4가지 듀티, 한 번에</h3>
+        <p>데이 · 이브닝 · 나이트 · 오프.<br><b>D / E / N / X</b> 어떤 형태든 자동 배정합니다.</p>
       </div>
-      <div class="step-img"><img src="images/web_step1.webp" alt="방 만들기"></div>
+      <div class="step-img"><img src="images/web_step1.webp" alt="4가지 듀티"></div>
     </div>
 
     <div class="step reverse">
       <div class="step-text">
         <div class="num">STEP 02</div>
-        <h3>기본정보 입력</h3>
-        <p>연/월, 간호사 수, 근무 유형, 균형 기준.<br><b>한 번 입력</b>하면 매달 그대로 사용합니다.</p>
+        <h3>역할에 맞는 진입점</h3>
+        <p>수간호사는 <b>방 만들기</b>.<br>간호사는 <b>방 입장하기</b>.</p>
       </div>
-      <div class="step-img"><img src="images/web_step2.webp" alt="기본정보 입력"></div>
+      <div class="step-img"><img src="images/web_step2.webp" alt="역할 선택"></div>
     </div>
 
     <div class="step">
       <div class="step-text">
         <div class="num">STEP 03</div>
-        <h3>희망근무 수집</h3>
-        <p>달력에서 D · E · N · X <b>터치 한 번</b>.<br>같이 일하기 불편한 동료까지 설정합니다.</p>
+        <h3>한 번만 입력하면 끝</h3>
+        <p>연 / 월 / 간호사 수, 3교대 모드.<br><b>데이↑ · 균형 · 이브닝↑</b> 원하는 기준을 설정합니다.</p>
       </div>
-      <div class="step-img"><img src="images/web_step3.webp" alt="희망근무 수집"></div>
+      <div class="step-img"><img src="images/web_step3.webp" alt="기본 정보 + 옵션"></div>
     </div>
 
     <div class="step reverse">
       <div class="step-text">
         <div class="num">STEP 04</div>
         <h3>1초 안에 완성</h3>
-        <p>버튼 한 번. <b>모든 조건을 만족</b>하는 근무표.<br>엑셀 다운로드까지 한 화면에서.</p>
+        <p>모든 조건을 만족하는 근무표.<br><b>엑셀 다운, 의뢰까지</b> 한 화면에서.</p>
       </div>
       <div class="step-img"><img src="images/web_step4.webp" alt="결과"></div>
     </div>
@@ -248,13 +251,14 @@
   <!-- 앱 다운로드 섹션 (디바이스 분기) -->
   <section class="free-section">
     <div class="free-tag">FREE FOREVER</div>
-    <h2 class="free-title">광고, 구독료 없습니다.<br><span class="blue">지금, 무료 다운로드.</span></h2>
+    <h2 class="free-title">광고, 구독료<br><span class="blue">영원히 없습니다.</span></h2>
 
     <!-- PC 전용 -->
     <div class="device-block" id="pcBlock">
       <a href="https://park-juhwan.github.io/fouroff_entrance" class="store-badge">
-        <img src="images/web_qrcode.webp" alt="">
+        <img src="images/web_qrcode.webp" alt="QR 코드">
       </a>
+      <span class="store-label">카메라 촬영 후<br>무료 다운로드</span>
     </div>
 
     <!-- iOS 전용 -->
@@ -262,7 +266,7 @@
       <a href="https://apps.apple.com/kr/app/%EA%B0%84%ED%98%B8%EC%82%AC-%EA%B7%BC%EB%AC%B4%ED%91%9C-%ED%8F%AC%EC%98%A4%ED%94%84/id6756883621" class="store-badge">
         <img src="images/web_appstore.webp" alt="App Store에서 다운로드">
       </a>
-      <span class="store-label">App Store</span>
+      <span class="store-label">터치하여<br>무료 다운로드</span>
     </div>
 
     <!-- Android 전용 -->
@@ -270,7 +274,7 @@
       <a href="https://play.google.com/store/apps/details?id=com.juhwanpark.fouroff&hl=ko" class="store-badge">
         <img src="images/web_playstore.webp" alt="Google Play에서 다운로드">
       </a>
-      <span class="store-label">Google Play</span>
+      <span class="store-label">터치하여<br>무료 다운로드</span>
     </div>
   </section>
 
@@ -317,14 +321,25 @@
   // graph auto fade
   const graphA = document.getElementById('graphA');
   const graphB = document.getElementById('graphB');
+  const graphCaption = document.getElementById('graphCaption');
+  const CAPTION_A = '26년 5월 기준 <b>90+</b> 다운로드';
+  const CAPTION_B = '26년 5월 기준 <b>50+</b> 다운로드';
   let showingA = true;
   setInterval(() => {
     if (showingA) {
       graphA.classList.add('is-hidden');
       graphB.classList.remove('is-hidden');
+      if (graphCaption) {
+        graphCaption.style.opacity = '0';
+        setTimeout(() => { graphCaption.innerHTML = CAPTION_B; graphCaption.style.opacity = '1'; }, 600);
+      }
     } else {
       graphB.classList.add('is-hidden');
       graphA.classList.remove('is-hidden');
+      if (graphCaption) {
+        graphCaption.style.opacity = '0';
+        setTimeout(() => { graphCaption.innerHTML = CAPTION_A; graphCaption.style.opacity = '1'; }, 600);
+      }
     }
     showingA = !showingA;
   }, 4000);
