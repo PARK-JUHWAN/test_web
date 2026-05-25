@@ -57,16 +57,16 @@
   .ebook-tagline{font-size:14px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:20px;}
   .ebook-headline{font-size:48px;font-weight:600;letter-spacing:-1.8px;line-height:1.15;margin-bottom:60px;color:#1d1d1f;}
   .ebook-headline .blue{color:#0066ff;}
-  .ebook-image{max-width:420px;margin:0 auto 24px;}
+  .ebook-image{max-width:520px;margin:0 auto 28px;}
   .ebook-image img{width:100%;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.12));transition:transform .5s ease;}
   .ebook-image:hover img{transform:translateY(-8px) rotate(-2deg);}
-  .ebook-note{font-size:13px;color:#86868b;letter-spacing:.5px;font-weight:500;}
+  .ebook-note{font-size:20px;color:#86868b;letter-spacing:.3px;font-weight:500;line-height:1.5;}
 
   /* 섹션 구분 */
   .portfolio-divider{padding:80px 0 60px;text-align:center;border-top:.5px solid #e8e8ed;}
-  .portfolio-divider .doubt{font-size:36px;font-weight:600;letter-spacing:-1.3px;color:#1d1d1f;margin-bottom:14px;}
+  .portfolio-divider .doubt{font-size:36px;font-weight:600;letter-spacing:-1.3px;color:#1d1d1f;margin-bottom:14px;line-height:1.2;}
   .portfolio-divider .doubt .blue{color:#0066ff;}
-  .portfolio-divider .verify{font-size:15px;color:#86868b;}
+  .portfolio-divider .verify{font-size:20px;color:#86868b;letter-spacing:.3px;font-weight:500;line-height:1.5;}
 
   /* 섹션 2: 앱 마퀴 */
   .apps-marquee-wrap{padding:0 0 80px;position:relative;overflow:hidden;mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);-webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);}
@@ -112,20 +112,14 @@
   /* 우측 텍스트 */
   .about-text{}
   .about-text .tag{font-size:13px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:18px;}
-  .about-text h2{font-size:48px;font-weight:600;letter-spacing:-1.8px;line-height:1.15;margin-bottom:24px;color:#1d1d1f;}
-  .about-text h2 .blue{color:#0066ff;}
-  .about-text .intro{font-size:17px;color:#515154;line-height:1.7;margin-bottom:30px;}
+  .about-name{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1.15;margin-bottom:32px;color:#1d1d1f;}
+  .about-name .blue{color:#0066ff;}
+  .about-text .intro{font-size:17px;color:#515154;line-height:1.8;margin-bottom:30px;}
   .about-text .intro b{color:#1d1d1f;font-weight:600;}
 
-  /* 키워드 카드들 */
-  .about-keywords{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;}
-  .about-keyword{background:#fafafa;border-radius:14px;padding:18px 20px;border:.5px solid #e8e8ed;}
-  .about-keyword .k-num{font-size:24px;font-weight:700;color:#0066ff;letter-spacing:-1px;line-height:1;margin-bottom:6px;}
-  .about-keyword .k-label{font-size:12px;color:#86868b;letter-spacing:.5px;font-weight:500;}
-
-  /* 인용 박스 */
-  .about-quote{margin-top:36px;padding:20px 24px;background:#f0f7ff;border-left:3px solid #0066ff;border-radius:0 12px 12px 0;}
-  .about-quote p{font-size:15px;color:#1d1d1f;line-height:1.7;font-style:italic;margin:0;}
+  /* 인용 박스 - 회색 + 이탤릭 + 살짝 사선 */
+  .about-quote{margin-top:40px;text-align:center;}
+  .about-quote p{font-size:18px;color:#9ca3af;line-height:1.6;font-style:italic;font-weight:400;margin:0;letter-spacing:.3px;transform:skewX(-6deg);display:inline-block;}
 
   @media(max-width:900px){
     .about-grid{grid-template-columns:1fr;gap:40px;}
@@ -133,13 +127,10 @@
   @media(max-width:768px){
     .about-wrap{padding:20px 0 60px;}
     .about-grid{gap:32px;}
-    .about-text h2{font-size:32px;letter-spacing:-1.3px;}
+    .about-name{font-size:38px;letter-spacing:-1.4px;margin-bottom:24px;}
     .about-text .intro{font-size:15px;}
-    .about-keywords{gap:10px;}
-    .about-keyword{padding:14px 16px;}
-    .about-keyword .k-num{font-size:20px;}
-    .about-quote{padding:16px 20px;margin-top:24px;}
-    .about-quote p{font-size:14px;}
+    .about-quote{margin-top:28px;}
+    .about-quote p{font-size:15px;}
   }
   .algo-wrap{max-width:1100px;margin:0 auto;}
 
@@ -501,12 +492,12 @@
     .ebook-section{padding:30px 0 80px;}
     .ebook-tagline{font-size:11px;letter-spacing:1.5px;margin-bottom:14px;}
     .ebook-headline{font-size:24px;letter-spacing:-1px;line-height:1.3;margin-bottom:40px;}
-    .ebook-image{max-width:240px;margin-bottom:18px;}
-    .ebook-note{font-size:11px;}
+    .ebook-image{max-width:300px;margin-bottom:22px;}
+    .ebook-note{font-size:15px;}
 
     .portfolio-divider{padding:50px 0 40px;}
-    .portfolio-divider .doubt{font-size:22px;letter-spacing:-.8px;margin-bottom:8px;}
-    .portfolio-divider .verify{font-size:12px;}
+    .portfolio-divider .doubt{font-size:22px;letter-spacing:-.8px;margin-bottom:8px;line-height:1.3;}
+    .portfolio-divider .verify{font-size:15px;}
 
     .apps-marquee-wrap{padding:0 0 50px;mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);-webkit-mask-image:linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);}
     .apps-marquee{gap:10px;}
@@ -559,17 +550,17 @@
         <!-- 섹션 1: 전자책 -->
         <div class="ebook-section">
           <div class="ebook-tagline">FROM ONE DEVELOPER</div>
-          <h2 class="ebook-headline">1년에 1개 만들기도 벅찬 앱<br><span class="blue">한 사람이 49개를 운영합니다</span></h2>
+          <h2 class="ebook-headline">1년에 1개 만들기도 벅찬 앱<br><span class="blue">저는 49개를 운영합니다</span></h2>
           <div class="ebook-image">
             <img src="../images/web_book.webp" alt="49 APPS, SOLO 전자책">
           </div>
-          <p class="ebook-note">아마존에서 판매 중</p>
+          <p class="ebook-note">49개를 만든 이야기<br>현재 AMAZON에서 판매 중</p>
         </div>
 
         <!-- 구분 + 의심 카피 -->
         <div class="portfolio-divider">
-          <p class="doubt">못 믿겠다고요? <span class="blue">직접 확인하세요</span></p>
-          <p class="verify">아이콘을 누르면 앱스토어로 이동합니다</p>
+          <p class="doubt">정확히 49개<br><span class="blue">직접 확인하세요</span></p>
+          <p class="verify">아이콘을 누르면 스토어로 이동합니다</p>
         </div>
 
         <!-- 섹션 2: 앱 마퀴 (4줄, 지그재그 방향) -->
@@ -893,35 +884,16 @@
           <!-- 우측: 텍스트 -->
           <div class="about-text">
             <div class="tag">DEVELOPER</div>
-            <h2>박주환<br><span class="blue">간호사 출신 1인 개발자</span></h2>
+            <h2 class="about-name">포오프 대표<br><span class="blue">박주환</span></h2>
 
             <p class="intro">
-              병동에서 직접 부딪힌 문제를 도구로 만듭니다<br>
-              <b>"엑셀로 근무표 짜느라 야근하는 수간호사"</b>를 보고 시작했고,<br>
-              지금은 49개 앱을 혼자 만들고 운영합니다
+              한양대학교(서울) 졸업<br>
+              현직 간호사, 그리고 개발자<br>
+              49개 앱을 혼자 만들고 운영합니다
             </p>
 
-            <div class="about-keywords">
-              <div class="about-keyword">
-                <div class="k-num">100+</div>
-                <div class="k-label">사이트 운영</div>
-              </div>
-              <div class="about-keyword">
-                <div class="k-num">49</div>
-                <div class="k-label">출시 앱</div>
-              </div>
-              <div class="about-keyword">
-                <div class="k-num">★ 5.0</div>
-                <div class="k-label">크몽 평점</div>
-              </div>
-              <div class="about-keyword">
-                <div class="k-num">SOLO</div>
-                <div class="k-label">기획·설계·개발</div>
-              </div>
-            </div>
-
             <div class="about-quote">
-              <p>"완벽한 코드보다 작동하는 앱이 답이다"</p>
+              <p>"완벽한 코드, 완벽한 프로그램"</p>
             </div>
           </div>
 
