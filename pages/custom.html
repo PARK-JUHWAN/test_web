@@ -46,14 +46,11 @@
   /* 다운로드 섹션 - 간결하게 */
   .download-section{padding:180px 32px 160px;background:#fff;text-align:center;}
   .dl-headline{font-size:72px;font-weight:600;letter-spacing:-2.8px;line-height:1.05;margin-bottom:56px;color:#1d1d1f;}
-  .dl-btn{display:inline-flex;align-items:center;gap:14px;background:#0066ff;color:#fff;padding:22px 40px 22px 32px;border-radius:980px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);position:relative;overflow:hidden;border:none;text-decoration:none;}
+  .dl-btn{display:inline-flex;align-items:center;background:#0066ff;color:#fff;padding:22px 40px;border-radius:980px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);position:relative;overflow:hidden;border:none;text-decoration:none;}
   .dl-btn:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,102,255,.4), 0 8px 16px rgba(0,0,0,.1);}
   .dl-btn:active{transform:translateY(0);}
   .dl-btn.disabled{cursor:not-allowed;opacity:.85;}
   .dl-btn.disabled:hover{background:#0066ff;transform:none;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);}
-  .dl-btn .icon{color:#fbbf24;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;animation:bounce 2s ease-in-out infinite;}
-  .dl-btn.disabled .icon{animation:none;}
-  @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(3px);}}
   .dl-note{margin-top:32px;font-size:12px;color:#86868b;line-height:1.6;}
 
   /* 디바이스 분기 */
@@ -115,7 +112,7 @@
     .hero-title{font-size:32px;letter-spacing:-1.3px;margin-bottom:40px;}
     .download-section{padding:100px 20px 100px;}
     .dl-headline{font-size:40px;letter-spacing:-1.6px;}
-    .dl-btn{padding:18px 28px 18px 22px;font-size:15px;}
+    .dl-btn{padding:18px 28px;font-size:15px;}
     .dl-btn .icon{width:30px;height:30px;font-size:15px;}
     .exe-intro{padding:80px 20px 50px;}
     .exe-title{font-size:32px;letter-spacing:-1.2px;}
@@ -164,13 +161,11 @@
     <h2 class="dl-headline">말 필요없이<br>직접 써보세요</h2>
 
     <a href="../exe/fouroff.exe" download class="dl-btn dl-pc">
-      <span class="icon">↓</span>
       <span>프로그램 다운로드</span>
     </a>
 
     <span class="dl-btn dl-mobile disabled">
-      <span class="icon">✕</span>
-      <span>PC 에서만 다운로드 가능</span>
+      <span>PC 에서만 다운로드</span>
     </span>
 
     <p class="dl-note">
