@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>맞춤제작 | FOUR OFF</title>
-<meta name="description" content="말 필요없이 직접 써보세요. 우리 부서 전용으로 맞춤 제작합니다.">
+<meta name="description" content="말 필요없이 직접 써보세요, 우리 부서 전용으로 맞춤 제작합니다">
 <link rel="icon" type="image/png" href="../images/web_icon.png">
 <link rel="apple-touch-icon" href="../images/web_icon.png">
 <style>
@@ -41,16 +41,27 @@
   .review-frame{position:relative;max-width:1000px;width:100%;margin:0 auto;aspect-ratio:3/2;}
   .review-frame img{width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .6s ease;}
   .review-frame img.loaded{opacity:1;}
+  .review-caption{text-align:center;font-size:14px;color:#86868b;letter-spacing:.3px;margin-top:16px;font-weight:500;}
 
   /* 다운로드 섹션 - 간결하게 */
   .download-section{padding:180px 32px 160px;background:#fff;text-align:center;}
   .dl-headline{font-size:72px;font-weight:600;letter-spacing:-2.8px;line-height:1.05;margin-bottom:56px;color:#1d1d1f;}
-  .dl-btn{display:inline-flex;align-items:center;gap:14px;background:#0066ff;color:#fff;padding:22px 40px 22px 32px;border-radius:980px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);position:relative;overflow:hidden;}
+  .dl-btn{display:inline-flex;align-items:center;gap:14px;background:#0066ff;color:#fff;padding:22px 40px 22px 32px;border-radius:980px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);position:relative;overflow:hidden;border:none;text-decoration:none;}
   .dl-btn:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,102,255,.4), 0 8px 16px rgba(0,0,0,.1);}
   .dl-btn:active{transform:translateY(0);}
-  .dl-btn .icon{width:36px;height:36px;background:rgba(255,255,255,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;animation:bounce 2s ease-in-out infinite;}
+  .dl-btn.disabled{cursor:not-allowed;opacity:.85;}
+  .dl-btn.disabled:hover{background:#0066ff;transform:none;box-shadow:0 16px 40px rgba(0,102,255,.32), 0 6px 14px rgba(0,0,0,.08);}
+  .dl-btn .icon{color:#fbbf24;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;animation:bounce 2s ease-in-out infinite;}
+  .dl-btn.disabled .icon{animation:none;}
   @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(3px);}}
   .dl-note{margin-top:32px;font-size:12px;color:#86868b;line-height:1.6;}
+
+  /* 디바이스 분기 */
+  .dl-pc{display:inline-block;}
+  .dl-mobile{display:none;}
+  body.is-mobile .dl-pc{display:none;}
+  body.is-mobile .dl-mobile{display:inline-block;}
+  body.is-mobile .dl-note{display:none;}
 
   /* 작동원리 (EXE step) */
   .exe-intro{padding:160px 32px 80px;background:#fafafa;text-align:center;}
@@ -141,34 +152,36 @@
 
   <!-- Hero: 후기 -->
   <section class="hero">
-    <div class="hero-tag">
-      <span class="star">★ 5.0</span>
-      <span>실제 의뢰자 후기</span>
-    </div>
-    <h1 class="hero-title">의뢰자의 <span class="blue">진짜 말</span>이<br>전부입니다.</h1>
+    <h1 class="hero-title">의뢰자의 <span class="blue">진짜 말</span>이<br>전부입니다</h1>
     <div class="review-frame">
       <img src="../images/web_review_1.webp" alt="크몽 5.0 후기" onload="this.classList.add('loaded')">
     </div>
+    <p class="review-caption">거짓 없는 실제 후기입니다</p>
   </section>
 
   <!-- 다운로드 섹션 -->
   <section class="download-section">
-    <h2 class="dl-headline">말 필요없이.<br>직접 써보세요.</h2>
+    <h2 class="dl-headline">말 필요없이<br>직접 써보세요</h2>
 
-    <a href="../exe/fouroff.exe" download class="dl-btn">
-      <span class="icon">⬇</span>
-      <span>fouroff.exe 다운로드</span>
+    <a href="../exe/fouroff.exe" download class="dl-btn dl-pc">
+      <span class="icon">↓</span>
+      <span>프로그램 다운로드</span>
     </a>
 
+    <span class="dl-btn dl-mobile disabled">
+      <span class="icon">✕</span>
+      <span>PC 에서만 다운로드 가능</span>
+    </span>
+
     <p class="dl-note">
-      윈도우 SmartScreen 경고가 뜨면 <b>추가 정보 → 실행</b> 눌러주세요.
+      윈도우 경고가 뜨면 <b>추가 정보 → 실행</b> 눌러주세요
     </p>
   </section>
 
   <!-- 작동원리 STEP -->
   <section class="exe-intro">
     <div class="exe-tag">HOW IT WORKS</div>
-    <h2 class="exe-title">3단계, 그게 전부입니다.</h2>
+    <h2 class="exe-title">3단계, 그게 전부입니다</h2>
   </section>
 
   <section class="exe-wrap">
@@ -177,7 +190,7 @@
       <div class="exe-step-text">
         <div class="num">STEP 01</div>
         <h3>실행 & 입력</h3>
-        <p>EXE를 더블클릭하면 끝. 설치 불필요.<br>직원 명단과 <b>저번달·이번달 근무이력</b>만 입력합니다.</p>
+        <p>EXE를 더블클릭하면 끝 (설치 불필요)<br>직원 명단과 <b>저번달·이번달 근무이력</b>만 입력합니다</p>
       </div>
       <div class="exe-step-img"><div class="exe-step-img-inner"><img src="../images/web_exe_step1.webp" alt="EXE 실행"></div></div>
     </div>
@@ -186,7 +199,7 @@
       <div class="exe-step-text">
         <div class="num">STEP 02</div>
         <h3>1초 생성</h3>
-        <p>버튼 한 번에 모든 조건을 만족하는 근무표 완성.<br><b>엑셀(.xlsx) 파일</b>로 바로 저장됩니다.</p>
+        <p>버튼 한 번에 모든 조건을 만족하는 근무표 완성<br><b>엑셀(.xlsx) 파일</b>로 바로 저장됩니다</p>
       </div>
       <div class="exe-step-img"><div class="exe-step-img-inner"><img src="../images/web_exe_step2.webp" alt="근무표 생성"></div></div>
     </div>
@@ -195,7 +208,7 @@
       <div class="exe-step-text">
         <div class="num">STEP 03</div>
         <h3>엑셀로 받기</h3>
-        <p>엑셀에서 그대로 열어 인쇄 또는 공유.<br>마음에 들면 <b>우리 부서 전용 룰</b>로 맞춤 제작 의뢰.</p>
+        <p>엑셀에서 그대로 열어 인쇄 또는 공유<br>마음에 들면 <b>우리 부서 전용 룰</b>로 맞춤 제작 의뢰</p>
       </div>
       <div class="exe-step-img"><div class="exe-step-img-inner"><img src="../images/web_exe_step3.webp" alt="엑셀 결과"></div></div>
     </div>
@@ -204,8 +217,8 @@
 
   <!-- CTA -->
   <section class="cta-section">
-    <h2 class="cta-title">우리 부서 룰,<br>그대로 만들어드립니다.</h2>
-    <p class="cta-sub">2교대 ↔ 3교대 · 특수 근무 · 야간 2인 · 포인트제까지.</p>
+    <h2 class="cta-title">우리 부서 룰,<br>그대로 만들어드립니다</h2>
+    <p class="cta-sub">2교대 ↔ 3교대 · 특수 근무 · 야간 2인 · 포인트제까지</p>
     <a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="cta-btn">크몽으로 의뢰하기 →</a>
   </section>
 
@@ -224,6 +237,10 @@
 </a>
 
 <script>
+  // 디바이스 분기 (모바일이면 is-mobile 클래스)
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+  if (isMobile) document.body.classList.add('is-mobile');
+
   // 페이지 진입 시 전체 fade-in
   window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(() => {
