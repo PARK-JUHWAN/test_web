@@ -940,10 +940,18 @@
         if (target) target.classList.add('fade-in');
       });
     }, 200);
-    // 스크롤 맨 위로
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 스크롤 맨 위로 (다중 안전망 - 모바일 대응)
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     // URL 해시 업데이트
     history.replaceState(null, '', '#' + targetId);
+    // 보험: hash 변경 후 브라우저 자동 스크롤 덮어쓰기
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 50);
   }
 
   tabs.forEach(tab => {
