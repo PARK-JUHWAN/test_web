@@ -107,8 +107,9 @@
   .step-text .rotate-a .red{color:#dc2626;}
   .step-text p{font-size:18px;color:#515154;line-height:1.75;}
   .step-text p b{color:#0066ff;font-weight:600;}
-  .step-img{display:flex;justify-content:center;align-items:center;position:relative;}
+  .step-img{display:flex;justify-content:center;align-items:center;position:relative;animation:stepFloat 4s ease-in-out infinite;}
   .step-img img{width:100%;max-width:480px;transition:transform .6s ease;}
+  @keyframes stepFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
   /* 폰 위치 보정: 모든 이미지가 폰이 우측 치우쳐 있음 */
   /* 홀수 step (이미지 우측 배치): 좌측으로 더 당겨서 텍스트 쪽으로 */
   .step:not(.reverse) .step-img img{transform:translateX(-22%);}
@@ -252,7 +253,7 @@
     <div class="step reverse">
       <div class="step-text">
         <div class="num">STEP 02</div>
-        <h3>역할에 따라<br>다르게 진입</h3>
+        <h3>역할에 따라<br>간편하게</h3>
         <p>팀장은 <b>방 만들기</b><br>직원은 <b>방 입장하기</b></p>
       </div>
       <div class="step-img"><img src="images/web_step2.webp" alt="역할 선택"></div>
@@ -261,8 +262,8 @@
     <div class="step">
       <div class="step-text">
         <div class="num">STEP 03</div>
-        <h3>한 번만 입력하면 끝</h3>
-        <p>연도, 월, 직원수<br><b>입력하면 끝</b></p>
+        <h3>한 번만<br>입력하면 끝</h3>
+        <p>연도, 월, 직원<br><b>입력하면 끝</b></p>
       </div>
       <div class="step-img"><img src="images/web_step3.webp" alt="기본 정보 + 옵션"></div>
     </div>
@@ -271,7 +272,7 @@
       <div class="step-text">
         <div class="num">STEP 04</div>
         <h3>10초 안에 완성</h3>
-        <p>모든 조건을 만족하는 근무표<br><b>엑셀다운까지</b></p>
+        <p>모든 조건을 만족하는 근무표<br><b>엑셀 다운까지</b></p>
       </div>
       <div class="step-img"><img src="images/web_step4.webp" alt="결과"></div>
     </div>

@@ -55,12 +55,13 @@
   /* 섹션 1: 전자책 */
   .ebook-section{padding:40px 0 120px;text-align:center;}
   .ebook-tagline{font-size:14px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:20px;}
-  .ebook-headline{font-size:48px;font-weight:600;letter-spacing:-1.8px;line-height:1.15;margin-bottom:60px;color:#1d1d1f;}
+  .ebook-headline{font-size:48px;font-weight:600;letter-spacing:-1.8px;line-height:1.3;margin-bottom:60px;color:#1d1d1f;}
   .ebook-headline .blue{color:#0066ff;}
-  .ebook-image{max-width:520px;margin:0 auto 28px;}
-  .ebook-image img{width:100%;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.12));transition:transform .5s ease;}
-  .ebook-image:hover img{transform:translateY(-8px) rotate(-2deg);}
+  .ebook-image{max-width:520px;margin:0 auto 28px;animation:ebookFloat 4s ease-in-out infinite;}
+  .ebook-image img{width:100%;display:block;filter:drop-shadow(0 30px 50px rgba(0,0,0,.12));}
+  @keyframes ebookFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
   .ebook-note{font-size:20px;color:#86868b;letter-spacing:.3px;font-weight:500;line-height:1.5;}
+  .ebook-note .blue{color:#0066ff;font-weight:700;}
 
   /* 섹션 구분 */
   .portfolio-divider{padding:80px 0 60px;text-align:center;border-top:.5px solid #e8e8ed;}
@@ -95,8 +96,8 @@
   #appsRow4{animation-duration:80s;margin-top:18px;}
 
   /* ============ 개발자 패널 ============ */
-  .about-wrap{max-width:1100px;margin:0 auto;padding:40px 0 80px;}
-  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:center;}
+  .about-wrap{max-width:1100px;margin:0 auto;padding:20px 0 80px;}
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
 
   /* 좌측 사진 */
   .about-photo{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.15);}
@@ -112,9 +113,10 @@
   .about-name .blue{color:#0066ff;}
   .about-text .intro{font-size:17px;color:#515154;line-height:1.8;margin-bottom:30px;}
   .about-text .intro b{color:#1d1d1f;font-weight:600;}
+  .about-text .intro .blue{color:#0066ff;font-weight:600;}
 
   /* 인용 박스 - 회색 + 이탤릭 + 살짝 사선 */
-  .about-quote{margin-top:40px;text-align:center;}
+  .about-quote{margin-top:40px;text-align:left;}
   .about-quote p{font-size:18px;color:#9ca3af;line-height:1.6;font-style:italic;font-weight:400;margin:0;letter-spacing:.3px;transform:skewX(-6deg);display:inline-block;}
 
   @media(max-width:900px){
@@ -487,7 +489,7 @@
     /* 포트폴리오 */
     .ebook-section{padding:30px 0 80px;}
     .ebook-tagline{font-size:11px;letter-spacing:1.5px;margin-bottom:14px;}
-    .ebook-headline{font-size:24px;letter-spacing:-1px;line-height:1.3;margin-bottom:40px;}
+    .ebook-headline{font-size:24px;letter-spacing:-1px;line-height:1.4;margin-bottom:40px;}
     .ebook-image{max-width:300px;margin-bottom:22px;}
     .ebook-note{font-size:15px;}
 
@@ -545,17 +547,17 @@
         <!-- 섹션 1: 전자책 -->
         <div class="ebook-section">
           <div class="ebook-tagline">FROM ONE DEVELOPER</div>
-          <h2 class="ebook-headline">1년에 1개 만들기도 벅찬 앱<br><span class="blue">저는 49개를 운영합니다</span></h2>
+          <h2 class="ebook-headline">1년에 1개 만들기도 벅찬 앱<br><span class="blue">저는 49개 운영합니다</span></h2>
           <div class="ebook-image">
             <img src="../images/web_book.webp" alt="49 APPS, SOLO 전자책">
           </div>
-          <p class="ebook-note">49개를 만든 이야기<br>현재 AMAZON에서 판매 중</p>
+          <p class="ebook-note">49개를 만든 이야기<br>현재 <span class="blue">AMAZON</span>에서 판매 중</p>
         </div>
 
         <!-- 구분 + 의심 카피 -->
         <div class="portfolio-divider">
           <p class="doubt">정확히 49개<br><span class="blue">직접 확인하세요</span></p>
-          <p class="verify">아이콘을 누르면 스토어로 이동합니다</p>
+          <p class="verify">아이콘을 누르면<br>스토어로 이동합니다</p>
         </div>
 
         <!-- 섹션 2: 앱 마퀴 (4줄, 지그재그 방향) -->
@@ -580,7 +582,7 @@
           <p class="sub">제약 만족 문제(CSP) 기반 자동 솔버<br>Google OR-Tools CP-SAT 엔진 기반</p>
           <div class="algo-stats">
             <div class="stat">
-              <div class="num">3</div>
+              <div class="num">3+</div>
               <div class="label">RULES</div>
             </div>
             <div class="stat">
@@ -598,14 +600,13 @@
         <div class="rule-section">
           <div class="rule-head">
             <div class="ko-name">근무 흐름 룰</div>
-            <h2>z_rule<span class="tech-name">Zone Rule</span></h2>
+            <h2>Z RULE<span class="tech-name">Zone Based Rule</span></h2>
             <p class="lead">N-gram 슬라이딩 윈도우 패턴 매칭</p>
           </div>
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여<br>N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다</p>
-              <p>각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다</p>
+              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여 N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다. 각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다</p>
               <ul>
                 <li>3일 윈도우 → 4³ = 64 패턴</li>
                 <li>4일 윈도우 → 4⁴ = 256 패턴</li>
@@ -642,14 +643,13 @@
         <div class="rule-section">
           <div class="rule-head">
             <div class="ko-name">운영 안전 룰</div>
-            <h2>mx_rule<span class="tech-name">Max Constrain Rule</span></h2>
+            <h2>MX RULE<span class="tech-name">Max Constrain Rule</span></h2>
             <p class="lead">정수 선형 계획법(ILP) 기반 상한 제약</p>
           </div>
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1) 기반<br>워크로드 균등화를 보장합니다</p>
-              <p>Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다</p>
+              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1) 기반 워크로드 균등화를 보장합니다. Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다</p>
               <ul>
                 <li>인원 제약 — Upper Bound Constraint</li>
                 <li>듀티 편차 제약 — Min-Max Optimization</li>
@@ -687,14 +687,13 @@
         <div class="rule-section">
           <div class="rule-head">
             <div class="ko-name">공정성 룰</div>
-            <h2>fc_rule<span class="tech-name">Fatigue Control Rule</span></h2>
+            <h2>FC RULE<span class="tech-name">Fair Cumulative</span></h2>
             <p class="lead">다기간 부하 균등화 (Multi-period Load Balancing)</p>
           </div>
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b> 기반<br>가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다</p>
-              <p>한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다</p>
+              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b> 기반 가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다. 한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다</p>
               <ul>
                 <li>야간 · 주말 · 공휴일 카테고리별 가중치 부여</li>
                 <li>직원별 누적 점수 산정 (Cumulative Scoring)</li>
@@ -863,7 +862,6 @@
           <!-- 좌측: 사진 -->
           <div class="about-photo">
             <img src="../images/web_profile_long.webp" alt="박주환 개발자">
-            <div class="photo-tag"><span class="dot"></span>Shipping Now</div>
           </div>
 
           <!-- 우측: 텍스트 -->
@@ -872,7 +870,7 @@
             <h2 class="about-name">포오프 대표<br><span class="blue">박주환</span></h2>
 
             <p class="intro">
-              한양대학교(서울) 졸업<br>
+              한양대학교<span class="blue">(서울)</span> 졸업<br>
               현직 간호사, 그리고 개발자<br>
               49개 앱을 혼자 만들고 운영합니다
             </p>
