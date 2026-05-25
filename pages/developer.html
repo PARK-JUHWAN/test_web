@@ -565,7 +565,7 @@
           <div class="ebook-image">
             <img src="../images/web_book.webp" alt="49 APPS, SOLO 전자책">
           </div>
-          <p class="ebook-note">49개를 만든 이야기<br>현재 <span class="blue">AMAZON</span>에서 판매 중</p>
+          <p class="ebook-note">49개를 만든 이야기<br>현재 <span class="blue">AMAZON</span> 에서 판매 중</p>
         </div>
 
         <!-- 구분 + 의심 카피 -->
@@ -940,6 +940,8 @@
         if (target) target.classList.add('fade-in');
       });
     }, 200);
+    // 스크롤 맨 위로
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     // URL 해시 업데이트
     history.replaceState(null, '', '#' + targetId);
   }
