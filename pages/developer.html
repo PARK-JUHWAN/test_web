@@ -324,30 +324,43 @@
   /* ============ 통합 흐름도: 큐브 파이프라인 ============ */
   .flow-pipeline{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 0 40px;perspective:1200px;}
   .pipe-step{display:flex;flex-direction:column;align-items:center;gap:18px;min-width:140px;}
-  .pipe-cube{width:64px;height:64px;transform-style:preserve-3d;position:relative;animation:cubeFloat 5s ease-in-out infinite;filter:drop-shadow(0 12px 18px rgba(0,0,0,.15));}
+  .pipe-cube{width:64px;height:64px;transform-style:preserve-3d;position:relative;animation:cubeWobble 5s ease-in-out infinite;}
   .pipe-cube .face{position:absolute;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;border-radius:8px;border:1px solid #e8e8ed;}
   .pipe-cube .front{transform:translateZ(32px);background:#fff;color:#1d1d1f;}
   .pipe-cube .back{transform:translateZ(-32px) rotateY(180deg);background:#f5f5f7;}
-  .pipe-cube .right{transform:rotateY(90deg) translateZ(32px);background:#fafafa;}
-  .pipe-cube .left{transform:rotateY(-90deg) translateZ(32px);background:#f0f0f3;}
+  .pipe-cube .right{transform:rotateY(90deg) translateZ(32px);background:#d1d5db;}
+  .pipe-cube .left{transform:rotateY(-90deg) translateZ(32px);background:#fafafa;}
   .pipe-cube .top{transform:rotateX(90deg) translateZ(32px);background:#fcfcfd;}
-  .pipe-cube .bottom{transform:rotateX(-90deg) translateZ(32px);background:#e8e8ed;}
+  .pipe-cube .bottom{transform:rotateX(-90deg) translateZ(32px);background:#9ca3af;}
+  .pipe-cube::after{content:'';position:absolute;bottom:-22px;left:5%;width:90%;height:10px;background:radial-gradient(ellipse at center, rgba(0,0,0,.18), transparent 70%);animation:cubeShadow 5s ease-in-out infinite;z-index:-1;}
+
+  @keyframes cubeWobble{
+    0%, 100% { transform: rotateX(-20deg) rotateY(-30deg) translateY(0); }
+    25%      { transform: rotateX(-20deg) rotateY(-20deg) translateY(-6px); }
+    50%      { transform: rotateX(-20deg) rotateY(-30deg) translateY(-12px); }
+    75%      { transform: rotateX(-20deg) rotateY(-40deg) translateY(-6px); }
+  }
+  @keyframes cubeShadow{
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(.7); opacity: .5; }
+  }
 
   /* INPUT 큐브: 검정 */
+  /* INPUT 큐브: 검정 (옆면 더 어두워서 입체감 ↑) */
   .pipe-step.input .pipe-cube .front{background:#1d1d1f;color:#fff;border-color:#1d1d1f;}
   .pipe-step.input .pipe-cube .back{background:#2a2a2c;}
-  .pipe-step.input .pipe-cube .right{background:#1f1f21;}
+  .pipe-step.input .pipe-cube .right{background:#0a0a0e;}
   .pipe-step.input .pipe-cube .left{background:#1a1a1c;}
   .pipe-step.input .pipe-cube .top{background:#2a2a2c;}
-  .pipe-step.input .pipe-cube .bottom{background:#0a0a0e;}
+  .pipe-step.input .pipe-cube .bottom{background:#000;}
 
-  /* OUTPUT 큐브: 파랑 */
+  /* OUTPUT 큐브: 파랑 (옆면 진해서 입체감 ↑) */
   .pipe-step.output .pipe-cube .front{background:#0066ff;color:#fff;border-color:#0066ff;}
   .pipe-step.output .pipe-cube .back{background:#1e40af;}
-  .pipe-step.output .pipe-cube .right{background:#3b82f6;}
-  .pipe-step.output .pipe-cube .left{background:#2563eb;}
-  .pipe-step.output .pipe-cube .top{background:#60a5fa;}
-  .pipe-step.output .pipe-cube .bottom{background:#1d4ed8;}
+  .pipe-step.output .pipe-cube .right{background:#1e40af;}
+  .pipe-step.output .pipe-cube .left{background:#3b82f6;}
+  .pipe-step.output .pipe-cube .top{background:#3b82f6;}
+  .pipe-step.output .pipe-cube .bottom{background:#1e3a8a;}
 
   .pipe-label{text-align:center;}
   .pipe-label .label-tag{font-size:9px;color:#86868b;letter-spacing:1.5px;font-weight:700;margin-bottom:4px;}
@@ -607,8 +620,8 @@
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여 N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다.</p>
-              <p>각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다.</p>
+              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여<br>N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다</p>
+              <p>각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다</p>
               <ul>
                 <li>3일 윈도우 → 4³ = 64 패턴</li>
                 <li>4일 윈도우 → 4⁴ = 256 패턴</li>
@@ -651,8 +664,8 @@
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1) 기반 워크로드 균등화를 보장합니다.</p>
-              <p>Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다.</p>
+              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1)<br>기반 워크로드 균등화를 보장합니다</p>
+              <p>Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다</p>
               <ul>
                 <li>인원 제약 — Upper Bound Constraint</li>
                 <li>듀티 편차 제약 — Min-Max Optimization</li>
@@ -696,8 +709,8 @@
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b> 기반 가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다.</p>
-              <p>한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다.</p>
+              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b><br>기반 가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다</p>
+              <p>한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다</p>
               <ul>
                 <li>야간 · 주말 · 공휴일 카테고리별 가중치 부여</li>
                 <li>직원별 누적 점수 산정 (Cumulative Scoring)</li>
@@ -813,7 +826,6 @@
               <div class="pipe-label">
                 <div class="label-tag">INPUT</div>
                 <div class="label-name">의뢰자 입력</div>
-                <div class="label-desc">회사 규칙</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
@@ -821,8 +833,7 @@
               <div class="pipe-cube"><div class="face front">Z</div><div class="face back">Z</div><div class="face right">Z</div><div class="face left">Z</div><div class="face top">Z</div><div class="face bottom">Z</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 1</div>
-                <div class="label-name">Z RULE</div>
-                <div class="label-desc">패턴 흐름 적용</div>
+                <div class="label-name">패턴 흐름 적용</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
@@ -830,8 +841,7 @@
               <div class="pipe-cube"><div class="face front">MX</div><div class="face back">MX</div><div class="face right">MX</div><div class="face left">MX</div><div class="face top">MX</div><div class="face bottom">MX</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 2</div>
-                <div class="label-name">MX RULE</div>
-                <div class="label-desc">수량 제약 적용</div>
+                <div class="label-name">수량 제약 적용</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
@@ -839,8 +849,7 @@
               <div class="pipe-cube"><div class="face front">FC</div><div class="face back">FC</div><div class="face right">FC</div><div class="face left">FC</div><div class="face top">FC</div><div class="face bottom">FC</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 3</div>
-                <div class="label-name">FC RULE</div>
-                <div class="label-desc">누적 공정 반영</div>
+                <div class="label-name">누적 공정 반영</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
@@ -849,7 +858,6 @@
               <div class="pipe-label">
                 <div class="label-tag">OUTPUT</div>
                 <div class="label-name">근무표 완성</div>
-                <div class="label-desc">10초 안에</div>
               </div>
             </div>
           </div>
