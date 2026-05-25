@@ -51,13 +51,13 @@
   /* Hero */
   .hero{min-height:100vh;padding:140px 32px 100px;background:#fafafa;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
   .hero::before{content:"";position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:1200px;height:700px;background:radial-gradient(ellipse, rgba(0,102,255,.05) 0%, transparent 60%);pointer-events:none;}
-  .live-headline{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1.1;color:#1d1d1f;text-align:center;margin-bottom:64px;position:relative;}
+  .live-headline{font-size:56px;font-weight:600;letter-spacing:-2px;line-height:1.3;color:#1d1d1f;text-align:center;margin-bottom:64px;position:relative;}
   .live-headline .live-dot{display:inline-block;width:12px;height:12px;background:#22c55e;border-radius:50%;margin-right:14px;vertical-align:middle;box-shadow:0 0 0 0 rgba(34,197,94,.6);animation:livePulse 1.6s ease-in-out infinite;}
   @keyframes livePulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5);}70%{box-shadow:0 0 0 14px rgba(34,197,94,0);}100%{box-shadow:0 0 0 0 rgba(34,197,94,0);}}
   .graph-stage{position:relative;max-width:960px;width:100%;margin:0 auto;}
   .graph-img{width:100%;height:auto;display:block;transition:opacity 1.2s ease;}
   .graph-img.is-hidden{opacity:0;position:absolute;top:0;left:0;}
-  .graph-caption{text-align:center;margin-top:20px;font-size:14px;color:#86868b;letter-spacing:.3px;font-weight:500;transition:opacity .6s ease;min-height:22px;}
+  .graph-caption{text-align:center;margin-top:24px;font-size:20px;color:#86868b;letter-spacing:.3px;font-weight:500;transition:opacity .6s ease;min-height:60px;line-height:1.5;}
   .graph-caption b{color:#1d1d1f;font-weight:700;}
 
   /* Steps Intro — 동적 효과 */
@@ -95,6 +95,16 @@
   .step-text .num{font-size:12px;color:#0066ff;letter-spacing:2.5px;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
   .step-text .num::before{content:"";width:24px;height:1px;background:#0066ff;}
   .step-text h3{font-size:48px;font-weight:600;letter-spacing:-1.6px;line-height:1.05;margin-bottom:24px;}
+
+  /* STEP 01 fade rotation */
+  .step-rotate{position:relative;min-height:120px;}
+  .rotate-item{position:absolute;top:0;left:0;right:0;opacity:0;transition:opacity .6s ease;}
+  .rotate-item.active{opacity:1;}
+  .rotate-q{font-size:32px;font-weight:600;letter-spacing:-1px;line-height:1.2;margin-bottom:14px;color:#1d1d1f;}
+  .rotate-a{font-size:18px;color:#6e6e73;line-height:1.6;}
+  .rotate-a b{font-weight:700;}
+  .rotate-a .blue{color:#0066ff;}
+  .rotate-a .red{color:#dc2626;}
   .step-text p{font-size:18px;color:#515154;line-height:1.75;}
   .step-text p b{color:#0066ff;font-weight:600;}
   .step-img{display:flex;justify-content:center;align-items:center;position:relative;}
@@ -117,7 +127,7 @@
   /* 앱 다운로드 섹션 (STEP 4 아래) */
   .free-section{padding:160px 32px 140px;background:#fff;text-align:center;}
   .free-tag{font-size:12px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:18px;}
-  .free-title{font-size:64px;font-weight:600;letter-spacing:-2.4px;line-height:1.05;color:#1d1d1f;margin-bottom:60px;}
+  .free-title{font-size:64px;font-weight:600;letter-spacing:-2.4px;line-height:1.25;color:#1d1d1f;margin-bottom:60px;}
   .free-title .blue{color:#0066ff;}
   /* 디바이스 분기 — 기본 다 숨김, JS가 해당 디바이스만 표시 */
   .device-block{display:none;}
@@ -143,8 +153,9 @@
     .nav-menu{gap:20px;}
     .nav-menu a{font-size:12px;}
     .hero{padding:100px 20px 80px;}
-    .live-headline{font-size:30px;letter-spacing:-1.2px;margin-bottom:40px;}
+    .live-headline{font-size:30px;letter-spacing:-1.2px;margin-bottom:40px;line-height:1.35;}
     .live-headline .live-dot{width:9px;height:9px;margin-right:10px;}
+    .graph-caption{font-size:15px;margin-top:18px;min-height:50px;}
     .steps-intro{padding:100px 20px 60px;}
     .dyn-headline{font-size:36px;letter-spacing:-1.3px;}
     .dyn-dot{width:7px;height:7px;margin-right:10px;}
@@ -156,8 +167,11 @@
     .step.reverse .step-img img{transform:none;}
     .step-text h3{font-size:30px;letter-spacing:-1.2px;}
     .step-text p{font-size:15px;}
+    .step-rotate{min-height:100px;}
+    .rotate-q{font-size:22px;letter-spacing:-.8px;margin-bottom:10px;}
+    .rotate-a{font-size:14px;}
     .free-section{padding:100px 20px 80px;}
-    .free-title{font-size:36px;letter-spacing:-1.3px;margin-bottom:40px;}
+    .free-title{font-size:36px;letter-spacing:-1.3px;margin-bottom:40px;line-height:1.3;}
     .store-badge img{width:160px;height:160px;}
     .balloon{right:16px;bottom:16px;padding:14px 22px 14px 18px;font-size:13px;}
   }
@@ -195,7 +209,7 @@
       <img src="images/web_apple.webp" alt="App Store 다운로드" class="graph-img" id="graphA">
       <img src="images/web_google.webp" alt="Google Play 다운로드" class="graph-img is-hidden" id="graphB">
     </div>
-    <p class="graph-caption" id="graphCaption">26년 5월 기준 <b>90+</b> 다운로드</p>
+    <p class="graph-caption" id="graphCaption">26년 5월 기준<br>애플 <b>90+</b> 다운로드</p>
   </section>
 
   <section class="steps-intro">
@@ -213,8 +227,24 @@
     <div class="step">
       <div class="step-text">
         <div class="num">STEP 01</div>
-        <h3>4가지 듀티, 한 번에</h3>
-        <p>데이 · 이브닝 · 나이트 · 오프.<br><b>D / E / N / X</b> 어떤 형태든 자동 배정합니다.</p>
+        <div class="step-rotate" id="stepRotate">
+          <div class="rotate-item active">
+            <p class="rotate-q">"4오프 써도 될까요?"</p>
+            <p class="rotate-a"><b class="blue">당연하죠</b>, 부담없이 신청하세요</p>
+          </div>
+          <div class="rotate-item">
+            <p class="rotate-q">"이브 다음날 데이요?"</p>
+            <p class="rotate-a"><b class="red">절대 안되죠</b>, 건강이 우선이에요</p>
+          </div>
+          <div class="rotate-item">
+            <p class="rotate-q">"저는 데이가 좋아요"</p>
+            <p class="rotate-a"><b class="blue">물론이죠</b>, 원하시는대로 배정해요</p>
+          </div>
+          <div class="rotate-item">
+            <p class="rotate-q">"그분과는 따로 일하고 싶어요"</p>
+            <p class="rotate-a"><b class="red">쉿</b>, 조용히 반영해드려요</p>
+          </div>
+        </div>
       </div>
       <div class="step-img"><img src="images/web_step1.webp" alt="4가지 듀티"></div>
     </div>
@@ -222,8 +252,8 @@
     <div class="step reverse">
       <div class="step-text">
         <div class="num">STEP 02</div>
-        <h3>역할에 맞는 진입점</h3>
-        <p>수간호사는 <b>방 만들기</b>.<br>간호사는 <b>방 입장하기</b>.</p>
+        <h3>역할에 따라<br>다르게 진입</h3>
+        <p>팀장은 <b>방 만들기</b>.<br>직원은 <b>방 입장하기</b>.</p>
       </div>
       <div class="step-img"><img src="images/web_step2.webp" alt="역할 선택"></div>
     </div>
@@ -232,7 +262,7 @@
       <div class="step-text">
         <div class="num">STEP 03</div>
         <h3>한 번만 입력하면 끝</h3>
-        <p>연 / 월 / 간호사 수, 3교대 모드.<br><b>데이↑ · 균형 · 이브닝↑</b> 원하는 기준을 설정합니다.</p>
+        <p>연도, 월, 직원수<br><b>입력하면 끝</b>.</p>
       </div>
       <div class="step-img"><img src="images/web_step3.webp" alt="기본 정보 + 옵션"></div>
     </div>
@@ -240,7 +270,7 @@
     <div class="step reverse">
       <div class="step-text">
         <div class="num">STEP 04</div>
-        <h3>1초 안에 완성</h3>
+        <h3>10초 안에 완성</h3>
         <p>모든 조건을 만족하는 근무표.<br><b>엑셀 다운, 의뢰까지</b> 한 화면에서.</p>
       </div>
       <div class="step-img"><img src="images/web_step4.webp" alt="결과"></div>
@@ -322,8 +352,8 @@
   const graphA = document.getElementById('graphA');
   const graphB = document.getElementById('graphB');
   const graphCaption = document.getElementById('graphCaption');
-  const CAPTION_A = '26년 5월 기준 <b>90+</b> 다운로드';
-  const CAPTION_B = '26년 5월 기준 <b>50+</b> 다운로드';
+  const CAPTION_A = '26년 5월 기준<br>애플 <b>90+</b> 다운로드';
+  const CAPTION_B = '26년 5월 기준<br>구글 <b>50+</b> 다운로드';
   let showingA = true;
   setInterval(() => {
     if (showingA) {
@@ -343,6 +373,17 @@
     }
     showingA = !showingA;
   }, 4000);
+
+  // STEP 01 fade rotation
+  const rotateItems = document.querySelectorAll('#stepRotate .rotate-item');
+  let rotateIdx = 0;
+  if (rotateItems.length > 0) {
+    setInterval(() => {
+      rotateItems[rotateIdx].classList.remove('active');
+      rotateIdx = (rotateIdx + 1) % rotateItems.length;
+      rotateItems[rotateIdx].classList.add('active');
+    }, 3500);
+  }
 
   // nav
   const navLinks = document.querySelectorAll('.nav-menu a');
