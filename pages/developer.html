@@ -135,7 +135,7 @@
   /* Hero */
   .algo-hero{text-align:center;padding:40px 0 100px;border-bottom:.5px solid #e8e8ed;margin-bottom:100px;}
   .algo-hero .tag{font-size:12px;color:#0066ff;letter-spacing:2.5px;font-weight:600;margin-bottom:18px;}
-  .algo-hero h1{font-size:64px;font-weight:600;letter-spacing:-2.4px;line-height:1.05;margin-bottom:24px;color:#1d1d1f;}
+  .algo-hero h1{font-size:64px;font-weight:600;letter-spacing:-2.4px;line-height:1.25;margin-bottom:24px;color:#1d1d1f;}
   .algo-hero h1 .blue{color:#0066ff;}
   .algo-hero .sub{font-size:18px;color:#515154;line-height:1.65;max-width:600px;margin:0 auto 56px;}
   .algo-stats{display:flex;justify-content:center;gap:60px;flex-wrap:wrap;}
@@ -146,7 +146,7 @@
   /* 각 룰 섹션 */
   .rule-section{margin-bottom:140px;}
   .rule-section:last-child{margin-bottom:80px;}
-  .rule-head{margin-bottom:48px;}
+  .rule-head{margin-bottom:24px;}
   .rule-head .ko-name{font-size:13px;color:#0066ff;letter-spacing:2px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
   .rule-head .ko-name::before{content:"";width:24px;height:1px;background:#0066ff;}
   .rule-head h2{font-size:48px;font-weight:600;letter-spacing:-1.8px;line-height:1.1;margin-bottom:12px;color:#1d1d1f;}
@@ -154,7 +154,8 @@
   .rule-head .lead{font-size:17px;color:#515154;line-height:1.7;max-width:680px;}
 
   .rule-body{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:start;}
-  .rule-text p{font-size:15px;color:#424245;line-height:1.85;margin-bottom:16px;}
+  .rule-text p{font-size:15px;color:#424245;line-height:1.85;margin-bottom:8px;}
+  .rule-text p:last-of-type{margin-bottom:16px;}
   .rule-text p b{color:#0066ff;font-weight:600;}
   .rule-text ul{list-style:none;padding:0;margin:24px 0;}
   .rule-text li{font-size:14px;color:#424245;padding:10px 0 10px 24px;position:relative;line-height:1.6;}
@@ -321,16 +322,16 @@
   }
 
   /* ============ 통합 흐름도: 큐브 파이프라인 ============ */
-  .flow-pipeline{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:20px 0 40px;perspective:1200px;}
-  .pipe-step{display:flex;flex-direction:column;align-items:center;gap:14px;min-width:120px;}
-  .pipe-cube{width:48px;height:48px;transform-style:preserve-3d;position:relative;animation:cubeFloat 4s ease-in-out infinite;filter:drop-shadow(0 8px 14px rgba(0,0,0,.12));}
-  .pipe-cube .face{position:absolute;width:48px;height:48px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;border-radius:7px;border:1px solid #e8e8ed;}
-  .pipe-cube .front{transform:translateZ(24px);background:#fff;color:#1d1d1f;}
-  .pipe-cube .back{transform:translateZ(-24px) rotateY(180deg);background:#f5f5f7;}
-  .pipe-cube .right{transform:rotateY(90deg) translateZ(24px);background:#fafafa;}
-  .pipe-cube .left{transform:rotateY(-90deg) translateZ(24px);background:#f0f0f3;}
-  .pipe-cube .top{transform:rotateX(90deg) translateZ(24px);background:#fcfcfd;}
-  .pipe-cube .bottom{transform:rotateX(-90deg) translateZ(24px);background:#e8e8ed;}
+  .flow-pipeline{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;padding:20px 0 40px;perspective:1200px;}
+  .pipe-step{display:flex;flex-direction:column;align-items:center;gap:18px;min-width:140px;}
+  .pipe-cube{width:64px;height:64px;transform-style:preserve-3d;position:relative;animation:cubeFloat 5s ease-in-out infinite;filter:drop-shadow(0 12px 18px rgba(0,0,0,.15));}
+  .pipe-cube .face{position:absolute;width:64px;height:64px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;border-radius:8px;border:1px solid #e8e8ed;}
+  .pipe-cube .front{transform:translateZ(32px);background:#fff;color:#1d1d1f;}
+  .pipe-cube .back{transform:translateZ(-32px) rotateY(180deg);background:#f5f5f7;}
+  .pipe-cube .right{transform:rotateY(90deg) translateZ(32px);background:#fafafa;}
+  .pipe-cube .left{transform:rotateY(-90deg) translateZ(32px);background:#f0f0f3;}
+  .pipe-cube .top{transform:rotateX(90deg) translateZ(32px);background:#fcfcfd;}
+  .pipe-cube .bottom{transform:rotateX(-90deg) translateZ(32px);background:#e8e8ed;}
 
   /* INPUT 큐브: 검정 */
   .pipe-step.input .pipe-cube .front{background:#1d1d1f;color:#fff;border-color:#1d1d1f;}
@@ -401,7 +402,7 @@
 
     /* 알고리즘 hero */
     .algo-hero{padding:20px 0 60px;margin-bottom:60px;}
-    .algo-hero h1{font-size:32px;letter-spacing:-1.3px;}
+    .algo-hero h1{font-size:32px;letter-spacing:-1.3px;line-height:1.3;}
     .algo-hero .sub{font-size:14px;}
     .algo-stats{gap:24px;}
     .stat .num{font-size:28px;}
@@ -606,7 +607,8 @@
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여 N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다. 각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다</p>
+              <p>듀티 시퀀스를 4진법(Base-4)으로 인코딩하여 N일 슬라이딩 윈도우 단위로 <b>4ⁿ 패턴 공간</b>을 탐색합니다.</p>
+              <p>각 패턴마다 사전 정의된 <b>룩업 테이블</b>이 다음 듀티의 도메인을 제약합니다.</p>
               <ul>
                 <li>3일 윈도우 → 4³ = 64 패턴</li>
                 <li>4일 윈도우 → 4⁴ = 256 패턴</li>
@@ -649,7 +651,8 @@
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1) 기반 워크로드 균등화를 보장합니다. Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다</p>
+              <p>Upper Bound 제약과 <b>Min-Max Equality</b> (max − min ≤ 1) 기반 워크로드 균등화를 보장합니다.</p>
+              <p>Pigeonhole 원리를 활용하여 <b>실현 가능성(Feasibility)</b>을 분석합니다.</p>
               <ul>
                 <li>인원 제약 — Upper Bound Constraint</li>
                 <li>듀티 편차 제약 — Min-Max Optimization</li>
@@ -687,13 +690,14 @@
         <div class="rule-section">
           <div class="rule-head">
             <div class="ko-name">공정성 룰</div>
-            <h2>FC RULE<span class="tech-name">Fair Cumulative</span></h2>
+            <h2>FC RULE<span class="tech-name">Fair Cumulative Rule</span></h2>
             <p class="lead">다기간 부하 균등화 (Multi-period Load Balancing)</p>
           </div>
 
           <div class="rule-body">
             <div class="rule-text">
-              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b> 기반 가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다. 한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다</p>
+              <p>2차원 가중치 테이블 <b>POINT_TABLE[duty][dow_class]</b> 기반 가중치 점수 합산(Weighted Cumulative Sum)을 수행합니다.</p>
+              <p>한 달이 아닌, <b>누적 시점의 공정성</b>을 봅니다.</p>
               <ul>
                 <li>야간 · 주말 · 공휴일 카테고리별 가중치 부여</li>
                 <li>직원별 누적 점수 산정 (Cumulative Scoring)</li>
@@ -751,7 +755,7 @@
                 <div class="fc-arrow">→</div>
 
                 <div class="fc-side after">
-                  <h6>fc_rule 적용</h6>
+                  <h6>FC RULE 적용</h6>
                   <div class="fc-persons">
                     <div class="fc-person-col">
                       <div class="fc-cube-stack">
@@ -805,7 +809,7 @@
           <h3>세 가지 룰이 <span class="blue">함께 작동합니다</span></h3>
           <div class="flow-pipeline">
             <div class="pipe-step input">
-              <div class="pipe-cube"><div class="face front">IN</div><div class="face back">IN</div><div class="face right">IN</div><div class="face left">IN</div><div class="face top">IN</div><div class="face bottom">IN</div></div>
+              <div class="pipe-cube"><div class="face front">?</div><div class="face back">?</div><div class="face right">?</div><div class="face left">?</div><div class="face top">?</div><div class="face bottom">?</div></div>
               <div class="pipe-label">
                 <div class="label-tag">INPUT</div>
                 <div class="label-name">의뢰자 입력</div>
@@ -814,28 +818,28 @@
             </div>
             <div class="pipe-arrow">→</div>
             <div class="pipe-step">
-              <div class="pipe-cube"><div class="face front">z</div><div class="face back">z</div><div class="face right">z</div><div class="face left">z</div><div class="face top">z</div><div class="face bottom">z</div></div>
+              <div class="pipe-cube"><div class="face front">Z</div><div class="face back">Z</div><div class="face right">Z</div><div class="face left">Z</div><div class="face top">Z</div><div class="face bottom">Z</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 1</div>
-                <div class="label-name">z_rule</div>
+                <div class="label-name">Z RULE</div>
                 <div class="label-desc">패턴 흐름 적용</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
             <div class="pipe-step">
-              <div class="pipe-cube"><div class="face front">mx</div><div class="face back">mx</div><div class="face right">mx</div><div class="face left">mx</div><div class="face top">mx</div><div class="face bottom">mx</div></div>
+              <div class="pipe-cube"><div class="face front">MX</div><div class="face back">MX</div><div class="face right">MX</div><div class="face left">MX</div><div class="face top">MX</div><div class="face bottom">MX</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 2</div>
-                <div class="label-name">mx_rule</div>
+                <div class="label-name">MX RULE</div>
                 <div class="label-desc">수량 제약 적용</div>
               </div>
             </div>
             <div class="pipe-arrow">→</div>
             <div class="pipe-step">
-              <div class="pipe-cube"><div class="face front">fc</div><div class="face back">fc</div><div class="face right">fc</div><div class="face left">fc</div><div class="face top">fc</div><div class="face bottom">fc</div></div>
+              <div class="pipe-cube"><div class="face front">FC</div><div class="face back">FC</div><div class="face right">FC</div><div class="face left">FC</div><div class="face top">FC</div><div class="face bottom">FC</div></div>
               <div class="pipe-label">
                 <div class="label-tag">STEP 3</div>
-                <div class="label-name">fc_rule</div>
+                <div class="label-name">FC RULE</div>
                 <div class="label-desc">누적 공정 반영</div>
               </div>
             </div>
@@ -893,7 +897,7 @@
 </div>
 
 <!-- balloon -->
-<a href="https://kmong.com/@%ED%8F%AC%EC%98%A4%ED%94%84" target="_blank" class="balloon">
+<a href="https://kmong.com/gig/739178" target="_blank" class="balloon">
   <span class="star">★</span>
   <span>맞춤제작 의뢰</span>
   <span class="arrow">→</span>
